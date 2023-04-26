@@ -1,0 +1,29 @@
+/* Variables */
+:root {
+    /* Colors for placeholders bg */
+    --placeholder-bg-1-1: #8ca0ff;
+    --placeholder-bg-1-2: #ffa08c;
+    --placeholder-bg-1-3: #ffff64;
+    --placeholder-bg-1-4: #8cffa0;
+
+    --placeholder-bg-2-1: #2C5D37;
+    --placeholder-bg-2-2: #E3C515;
+    --placeholder-bg-2-3: #EE51B1;
+    --placeholder-bg-2-4: #A59CD3;
+    --placeholder-bg-2-5: #4B2D9F;
+
+    /* Colors for placeholders elements/text */
+    --placeholder-color-1: #02C9AF;
+    --placeholder-color-2: #049CE4;
+    --placeholder-color-3: #FE00EC;
+    --placeholder-color-4: #2B4F8D;
+    --placeholder-color-5: #011034;
+
+    /* BGs */
+    --dark-bg-for-buttons: #404040;
+}
+
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+}

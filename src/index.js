@@ -1,4 +1,5 @@
 // ESLint rules per file start
+/* eslint-disable no-console */
 // ESLint rules per file end
 
 /**
@@ -38,13 +39,14 @@ const debugHardcode = 1;
 /**
  * TODO: get debug flag from somewhere.
  */
-const debugFlag = 0;
+const debugFlag = 1;
 // eslint-disable-next-line no-unneeded-ternary
 const debug = debugHardcode ? debugHardcode : debugFlag;
 
 /* Constants and vars of states and other things. */
 let languageGeneral = 'en';
 
-const basicStructureGenerator = new BasicStructureGenerator('body');
+const basicStructureGenerator = new BasicStructureGenerator('body', debug);
 
-basicStructureGenerator.generate();
+basicStructureGenerator.generateAll();
+basicStructureGenerator.append();

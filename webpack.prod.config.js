@@ -1,12 +1,11 @@
 // ESLint rules per file start
 /* eslint-disable no-console */
-/* eslint-disable quotes */
 // ESLint rules per file end
 
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-console.log("Using webpack.prod.config.js.");
+console.log('Using webpack.prod.config.js.');
 
 module.exports = {
   mode: 'production',

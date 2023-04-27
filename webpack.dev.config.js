@@ -1,18 +1,17 @@
 // ESLint rules per file start
 /* eslint-disable no-console */
-/* eslint-disable quotes */
 // ESLint rules per file end
 
 const path = require('path');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // eslint-disable-next-line import/no-extraneous-dependencies
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // suppress reason: ESLint cant identifier inner lvl webpack config file
 const { getTimestamp } = require('./config_utils/config-utils');
 // getTimestamp function import
 
-console.log("Using webpack.dev.config.js.");
+console.log('Using webpack.dev.config.js.');
 
 module.exports = (env) => {
 // module.exports = {

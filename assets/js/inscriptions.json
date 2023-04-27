@@ -1,0 +1,708 @@
+{
+  "en": {
+    "1": {
+      "row": "1",
+      "symbolDefault": {
+        "symbol": "&#96;",
+        "name": "Grave Accent"
+      },
+      "symbolMod": {
+        "symbol": "&#126;",
+        "name": "Tilde"
+      }
+    },
+    "2": {
+      "row": "1",
+      "symbolDefault": {
+        "symbol": "1",
+        "name": "Digit One"
+      },
+      "symbolMod": {
+        "symbol": "!",
+        "name": "Exclamation Mark"
+      }
+    },
+    "3": {
+      "row": "1",
+      "symbolDefault": {
+        "symbol": "2",
+        "name": "Digit Two"
+      },
+      "symbolMod": {
+        "symbol": "&#64;",
+        "name": "Commercial At"
+      }
+    },
+    "4": {
+      "row": "1",
+      "symbolDefault": {
+        "symbol": "3",
+        "name": "Digit Three"
+      },
+      "symbolMod": {
+        "symbol": "&#35;",
+        "name": "Number Sign"
+      }
+    },
+    "5": {
+      "row": "1",
+      "symbolDefault": {
+        "symbol": "4",
+        "name": "Digit Four"
+      },
+      "symbolMod": {
+        "symbol": "&#36;",
+        "name": "Dollar Sign"
+      }
+    },
+    "6": {
+      "row": "1",
+      "symbolDefault": {
+        "symbol": "5",
+        "name": "Digit Five"
+      },
+      "symbolMod": {
+        "symbol": "&#37;",
+        "name": "Percent Sign"
+      }
+    },
+    "7": {
+      "row": "1",
+      "symbolDefault": {
+        "symbol": "6",
+        "name": "Digit Six"
+      },
+      "symbolMod": {
+        "symbol": "&#94;",
+        "name": "Circumflex Accent"
+      }
+    },
+    "8": {
+      "row": "1",
+      "symbolDefault": {
+        "symbol": "7",
+        "name": "Digit Seven"
+      },
+      "symbolMod": {
+        "symbol": "&#38;",
+        "name": "Ampersand"
+      }
+    },
+    "9": {
+      "row": "1",
+      "symbolDefault": {
+        "symbol": "8",
+        "name": "Digit Eight"
+      },
+      "symbolMod": {
+        "symbol": "&#42;",
+        "name": "Asterisk"
+      }
+    },
+    "10": {
+      "row": "1",
+      "symbolDefault": {
+        "symbol": "9",
+        "name": "Digit Nine"
+      },
+      "symbolMod": {
+        "symbol": "&#40;",
+        "name": "Left Parenthesis"
+      }
+    },
+    "11": {
+      "row": "1",
+      "symbolDefault": {
+        "symbol": "0",
+        "name": "Digit Zero"
+      },
+      "symbolMod": {
+        "symbol": "&#41;",
+        "name": "Right Parenthesis"
+      }
+    },
+    "12": {
+      "row": "1",
+      "symbolDefault": {
+        "symbol": "-",
+        "name": "Hyphen-Minus"
+      },
+      "symbolMod": {
+        "symbol": "_",
+        "name": "Low Line"
+      }
+    },
+    "13": {
+      "row": "1",
+      "symbolDefault": {
+        "symbol": "=",
+        "name": "Equals Sign"
+      },
+      "symbolMod": {
+        "symbol": "+",
+        "name": "Plus Sign"
+      }
+    },
+    "14": {
+      "row": "1",
+      "symbolDefault": {
+        "symbol": "Backspace",
+        "name": "Backspace key"
+      },
+      "symbolMod": {
+        "symbol": "none",
+        "name": "none"
+      }
+    },
+    "15": {
+      "row": "2",
+      "symbolDefault": {
+        "symbol": "Tab",
+        "name": "Tab key"
+      },
+      "symbolMod": {
+        "symbol": "none",
+        "name": "none"
+      }
+    },
+    "16": {
+      "row": "2",
+      "symbolDefault": {
+        "symbol": "q",
+        "name": "Latin Small Letter Q"
+      },
+      "symbolMod": {
+        "symbol": "Q",
+        "name": "Latin Capital Letter Q"
+      }
+    },
+    "17": {
+      "row": "2",
+      "symbolDefault": {
+        "symbol": "w",
+        "name": "Latin Small Letter W"
+      },
+      "symbolMod": {
+        "symbol": "W",
+        "name": "Latin Capital Letter W"
+      }
+    },
+    "18": {
+      "row": "2",
+      "symbolDefault": {
+        "symbol": "e",
+        "name": "Latin Small Letter E"
+      },
+      "symbolMod": {
+        "symbol": "E",
+        "name": "Latin Capital Letter E"
+      }
+    },
+    "19": {
+      "row": "2",
+      "symbolDefault": {
+        "symbol": "r",
+        "name": "Latin Small Letter R"
+      },
+      "symbolMod": {
+        "symbol": "R",
+        "name": "Latin Capital Letter R"
+      }
+    },
+    "20": {
+      "row": "2",
+      "symbolDefault": {
+        "symbol": "t",
+        "name": "Latin Small Letter T"
+      },
+      "symbolMod": {
+        "symbol": "T",
+        "name": "Latin Capital Letter T"
+      }
+    },
+    "21": {
+      "row": "2",
+      "symbolDefault": {
+        "symbol": "y",
+        "name": "Latin Small Letter Y"
+      },
+      "symbolMod": {
+        "symbol": "Y",
+        "name": "Latin Capital Letter Y"
+      }
+    },
+    "22": {
+      "row": "2",
+      "symbolDefault": {
+        "symbol": "u",
+        "name": "Latin Small Letter U"
+      },
+      "symbolMod": {
+        "symbol": "U",
+        "name": "Latin Capital Letter U"
+      }
+    },
+    "23": {
+      "row": "2",
+      "symbolDefault": {
+        "symbol": "i",
+        "name": "Latin Small Letter I"
+      },
+      "symbolMod": {
+        "symbol": "I",
+        "name": "Latin Capital Letter I"
+      }
+    },
+    "24": {
+      "row": "2",
+      "symbolDefault": {
+        "symbol": "o",
+        "name": "Latin Small Letter O"
+      },
+      "symbolMod": {
+        "symbol": "O",
+        "name": "Latin Capital Letter O"
+      }
+    },
+    "25": {
+      "row": "2",
+      "symbolDefault": {
+        "symbol": "p",
+        "name": "Latin Small Letter P"
+      },
+      "symbolMod": {
+        "symbol": "P",
+        "name": "Latin Capital Letter P"
+      }
+    },
+    "26": {
+      "row": "2",
+      "symbolDefault": {
+        "symbol": "&#91;",
+        "name": "Left Square Bracket"
+      },
+      "symbolMod": {
+        "symbol": "&#123;",
+        "name": "Left Curly Bracket"
+      }
+    },
+    "27": {
+      "row": "2",
+      "symbolDefault": {
+        "symbol": "&#93;",
+        "name": "Right Square Bracket"
+      },
+      "symbolMod": {
+        "symbol": "&#125;",
+        "name": "Right Curly Bracket"
+      }
+    },
+    "28": {
+      "row": "2",
+      "symbolDefault": {
+        "symbol": "&#92;",
+        "name": "Reverse Solidus"
+      },
+      "symbolMod": {
+        "symbol": "&#124;",
+        "name": "Vertical Line"
+      }
+    },
+    "29": {
+      "row": "2",
+      "symbolDefault": {
+        "symbol": "Del",
+        "name": "Delete key"
+      },
+      "symbolMod": {
+        "symbol": "none",
+        "name": "none"
+      }
+    },
+    "30": {
+      "row": "3",
+      "symbolDefault": {
+        "symbol": "Caps Lock",
+        "name": "Caps Lock key"
+      },
+      "symbolMod": {
+        "symbol": "none",
+        "name": "none"
+      }
+    },
+    "31": {
+      "row": "3",
+      "symbolDefault": {
+        "symbol": "a",
+        "name": "Latin Small Letter A"
+      },
+      "symbolMod": {
+        "symbol": "A",
+        "name": "Latin Capital Letter A"
+      }
+    },
+    "32": {
+      "row": "3",
+      "symbolDefault": {
+        "symbol": "s",
+        "name": "Latin Small Letter S"
+      },
+      "symbolMod": {
+        "symbol": "S",
+        "name": "Latin Capital Letter S"
+      }
+    },
+    "33": {
+      "row": "3",
+      "symbolDefault": {
+        "symbol": "d",
+        "name": "Latin Small Letter D"
+      },
+      "symbolMod": {
+        "symbol": "D",
+        "name": "Latin Capital Letter D"
+      }
+    },
+    "34": {
+      "row": "3",
+      "symbolDefault": {
+        "symbol": "f",
+        "name": "Latin Small Letter F"
+      },
+      "symbolMod": {
+        "symbol": "F",
+        "name": "Latin Capital Letter F"
+      }
+    },
+    "35": {
+      "row": "3",
+      "symbolDefault": {
+        "symbol": "g",
+        "name": "Latin Small Letter G"
+      },
+      "symbolMod": {
+        "symbol": "G",
+        "name": "Latin Capital Letter G"
+      }
+    },
+    "36": {
+      "row": "3",
+      "symbolDefault": {
+        "symbol": "h",
+        "name": "Latin Small Letter H"
+      },
+      "symbolMod": {
+        "symbol": "H",
+        "name": "Latin Capital Letter H"
+      }
+    },
+    "37": {
+      "row": "3",
+      "symbolDefault": {
+        "symbol": "j",
+        "name": "Latin Small Letter J"
+      },
+      "symbolMod": {
+        "symbol": "J",
+        "name": "Latin Capital Letter J"
+      }
+    },
+    "38": {
+      "row": "3",
+      "symbolDefault": {
+        "symbol": "k",
+        "name": "Latin Small Letter K"
+      },
+      "symbolMod": {
+        "symbol": "K",
+        "name": "Latin Capital Letter K"
+      }
+    },
+    "39": {
+      "row": "3",
+      "symbolDefault": {
+        "symbol": "l",
+        "name": "Latin Small Letter L"
+      },
+      "symbolMod": {
+        "symbol": "L",
+        "name": "Latin Capital Letter L"
+      }
+    },
+    "40": {
+      "row": "3",
+      "symbolDefault": {
+        "symbol": ";",
+        "name": "Semicolon"
+      },
+      "symbolMod": {
+        "symbol": ":",
+        "name": "Colon"
+      }
+    },
+    "41": {
+      "row": "3",
+      "symbolDefault": {
+        "symbol": "&#39;",
+        "name": "Apostrophe"
+      },
+      "symbolMod": {
+        "symbol": "&#34;",
+        "name": "Quotation Mark"
+      }
+    },
+    "42": {
+      "row": "3",
+      "symbolDefault": {
+        "symbol": "Enter",
+        "name": "Enter key"
+      },
+      "symbolMod": {
+        "symbol": "none",
+        "name": "none"
+      }
+    },
+    "43": {
+      "row": "4",
+      "symbolDefault": {
+        "symbol": "Shift",
+        "name": "Left Shift key"
+      },
+      "symbolMod": {
+        "symbol": "none",
+        "name": "none"
+      }
+    },
+    "44": {
+      "row": "4",
+      "symbolDefault": {
+        "symbol": "z",
+        "name": "Latin Small Letter Z"
+      },
+      "symbolMod": {
+        "symbol": "Z",
+        "name": "Latin Capital Letter Z"
+      }
+    },
+    "45": {
+      "row": "4",
+      "symbolDefault": {
+        "symbol": "x",
+        "name": "Latin Small Letter X"
+      },
+      "symbolMod": {
+        "symbol": "X",
+        "name": "Latin Capital Letter X"
+      }
+    },
+    "46": {
+      "row": "4",
+      "symbolDefault": {
+        "symbol": "c",
+        "name": "Latin Small Letter C"
+      },
+      "symbolMod": {
+        "symbol": "C",
+        "name": "Latin Capital Letter C"
+      }
+    },
+    "47": {
+      "row": "4",
+      "symbolDefault": {
+        "symbol": "v",
+        "name": "Latin Small Letter V"
+      },
+      "symbolMod": {
+        "symbol": "V",
+        "name": "Latin Capital Letter V"
+      }
+    },
+    "48": {
+      "row": "4",
+      "symbolDefault": {
+        "symbol": "b",
+        "name": "Latin Small Letter B"
+      },
+      "symbolMod": {
+        "symbol": "B",
+        "name": "Latin Capital Letter B"
+      }
+    },
+    "49": {
+      "row": "4",
+      "symbolDefault": {
+        "symbol": "n",
+        "name": "Latin Small Letter N"
+      },
+      "symbolMod": {
+        "symbol": "N",
+        "name": "Latin Capital Letter N"
+      }
+    },
+    "50": {
+      "row": "4",
+      "symbolDefault": {
+        "symbol": "m",
+        "name": "Latin Small Letter M"
+      },
+      "symbolMod": {
+        "symbol": "M",
+        "name": "Latin Capital Letter M"
+      }
+    },
+    "51": {
+      "row": "4",
+      "symbolDefault": {
+        "symbol": ",",
+        "name": "Comma"
+      },
+      "symbolMod": {
+        "symbol": "<",
+        "name": "Less-Than Sign"
+      }
+    },
+    "52": {
+      "row": "4",
+      "symbolDefault": {
+        "symbol": ".",
+        "name": "Full Stop (Dot)"
+      },
+      "symbolMod": {
+        "symbol": ">",
+        "name": "Greater-Than Sign"
+      }
+    },
+    "53": {
+      "row": "4",
+      "symbolDefault": {
+        "symbol": "&#47;",
+        "name": "Solidus"
+      },
+      "symbolMod": {
+        "symbol": "?",
+        "name": "Question Mark"
+      }
+    },
+    "54": {
+      "row": "4",
+      "symbolDefault": {
+        "symbol": "&#9650;",
+        "name": "Up Arrow key"
+      },
+      "symbolMod": {
+        "symbol": "none",
+        "name": "none"
+      }
+    },
+    "55": {
+      "row": "4",
+      "symbolDefault": {
+        "symbol": "Shift",
+        "name": "Right Shift key"
+      },
+      "symbolMod": {
+        "symbol": "none",
+        "name": "none"
+      }
+    },
+    "56": {
+      "row": "5",
+      "symbolDefault": {
+        "symbol": "Ctrl",
+        "name": "Left Ctrl key"
+      },
+      "symbolMod": {
+        "symbol": "none",
+        "name": "none"
+      }
+    },
+    "57": {
+      "row": "5",
+      "symbolDefault": {
+        "symbol": "Win",
+        "name": "Win key"
+      },
+      "symbolMod": {
+        "symbol": "none",
+        "name": "none"
+      }
+    },
+    "58": {
+      "row": "5",
+      "symbolDefault": {
+        "symbol": "Alt",
+        "name": "Left Alt key"
+      },
+      "symbolMod": {
+        "symbol": "none",
+        "name": "none"
+      }
+    },
+    "59": {
+      "row": "5",
+      "symbolDefault": {
+        "symbol": "Space",
+        "name": "Space key"
+      },
+      "symbolMod": {
+        "symbol": "none",
+        "name": "none"
+      }
+    },
+    "60": {
+      "row": "5",
+      "symbolDefault": {
+        "symbol": "Alt",
+        "name": "Right Alt key"
+      },
+      "symbolMod": {
+        "symbol": "none",
+        "name": "none"
+      }
+    },
+    "61": {
+      "row": "5",
+      "symbolDefault": {
+        "symbol": "&#9668;",
+        "name": "Left Arrow key"
+      },
+      "symbolMod": {
+        "symbol": "none",
+        "name": "none"
+      }
+    },
+    "62": {
+      "row": "5",
+      "symbolDefault": {
+        "symbol": "&#9660;",
+        "name": "Down Arrow key"
+      },
+      "symbolMod": {
+        "symbol": "none",
+        "name": "none"
+      }
+    },
+    "63": {
+      "row": "5",
+      "symbolDefault": {
+        "symbol": "&#9658;",
+        "name": "Right Arrow key"
+      },
+      "symbolMod": {
+        "symbol": "none",
+        "name": "none"
+      }
+    },
+    "64": {
+      "row": "5",
+      "symbolDefault": {
+        "symbol": "Ctrl",
+        "name": "Right Ctrl key"
+      },
+      "symbolMod": {
+        "symbol": "none",
+        "name": "none"
+      }
+    }
+  }
+}

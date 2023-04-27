@@ -55,6 +55,18 @@ export default class BasicStructureGenerator {
   generateMain() {
     this.main = document.createElement('main');
     this.main.classList.add('main');
+
+    const keyboardAndDisplay = document.createElement('div');
+    keyboardAndDisplay.classList.add('keyboard-and-display');
+    const display = document.createElement('textarea');
+    display.classList.add('keyboard__display');
+    const keyboard = document.createElement('div');
+    keyboard.classList.add('keyboard__keys-container');
+
+
+    keyboardAndDisplay.appendChild(display);
+    keyboardAndDisplay.appendChild(keyboard);
+    this.main.append(keyboardAndDisplay);
   }
 
   /**

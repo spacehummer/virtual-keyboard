@@ -1,6 +1,9 @@
 // ESLint rules per file start
 /* eslint-disable no-console */
 // ESLint rules per file end
+
+import inscriptions from '../assets/js/inscriptions.json';
+
 /**
  * BasicStructureGenerator class for generate basic HTML Elements for App.
  */
@@ -21,6 +24,10 @@ export default class BasicStructureGenerator {
   footer;
   // </editor-fold desc="Elements">
 
+  inscriptions;
+
+  keysCount;
+
   verboseLvl;
 
   constructor(rootToken, verboseLvl = 0) {
@@ -33,6 +40,9 @@ export default class BasicStructureGenerator {
     this.header = null;
     this.main = null;
     this.footer = null;
+
+    this.inscriptions = inscriptions;
+    this.keysCount = Object.keys(this.inscriptions.en).length;
   }
 
   /**
@@ -63,6 +73,13 @@ export default class BasicStructureGenerator {
     const keyboard = document.createElement('div');
     keyboard.classList.add('keyboard__keys-container');
 
+    if (this.verboseLvl > 0) {
+      console.log('Keys count:', this.keysCount);
+    }
+
+    for (let keyIndex = 1; keyIndex <= this.keysCount; keyIndex += 1) {
+      keyboard.appendChild(document.createElement('button'));
+    }
 
     keyboardAndDisplay.appendChild(display);
     keyboardAndDisplay.appendChild(keyboard);

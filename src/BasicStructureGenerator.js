@@ -4,6 +4,42 @@
 
 import inscriptions from '../assets/js/inscriptions.json';
 
+// <editor-fold desc="Keys Object JSDoc">
+/**
+ * @typedef   {Object} keyInscriptions  - Object, parsed from JSON with info about keys.
+ * @property  {Object} en               - inner Object with info
+ *                                        about keys for English keyboard.
+ */
+
+/**
+ * @typedef   {Object} en           - inner Object with info
+ *                                    about keys for English keyboard.
+ * @property  {Object} keyByNumber  - inner Object with information about separate key.
+ */
+
+/**
+ * @typedef   {Object} keyByNumber    - inner Object with information about separate key.
+ * @property  {String} row            - field with information
+ *                                      about keyboard row of current key.
+ * @property  {Object} symbolDefault  - Object with information about symbol for default state.
+ * @property  {Object} symbolMod      - Object with information about symbol
+ *                                      for Shift modification state.
+ */
+
+/**
+ * @typedef   {Object} symbolDefault  - Object with information about symbol for default state.
+ * @property  {String} symbol         - symbol or HTML mnemonic.
+ * @property  {String} name           - human-readable name of symbol.
+ */
+
+/**
+ * @typedef   {Object} symbolMod      - Object with information about symbol
+ *                                      for Shift modification state.
+ * @property  {String} symbol         - symbol or HTML mnemonic.
+ * @property  {String} name           - human-readable name of symbol.
+ */
+// </editor-fold desc="Keys Object JSDoc">
+
 /**
  * BasicStructureGenerator class for generate basic HTML Elements for App.
  */
@@ -41,6 +77,10 @@ export default class BasicStructureGenerator {
     this.main = null;
     this.footer = null;
 
+    /**
+     * Object, parsed from JSON with info about keys.
+     * @type keyInscriptions
+     */
     this.inscriptions = inscriptions;
     this.keysCount = Object.keys(this.inscriptions.en).length;
   }

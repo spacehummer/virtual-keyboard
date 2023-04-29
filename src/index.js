@@ -49,4 +49,4 @@ let languageGeneral = 'en';
 const basicStructureGenerator = new BasicStructureGenerator('body', debug);
 
 basicStructureGenerator.generateAll();
-basicStructureGenerator.append();
+basicStructureGenerator.appendHTMLElements();

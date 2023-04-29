@@ -58,6 +58,8 @@ export default class BasicStructureGenerator {
   main;
 
   footer;
+
+  container;
   // </editor-fold desc="Elements">
 
   inscriptions;
@@ -76,6 +78,9 @@ export default class BasicStructureGenerator {
     this.header = null;
     this.main = null;
     this.footer = null;
+
+    this.container = document.createElement('div');
+    this.container.classList.add('container');
 
     /**
      * Object, parsed from JSON with info about keys.
@@ -96,7 +101,9 @@ export default class BasicStructureGenerator {
     headingH1.innerText = 'Virtual keyboard';
     headingH1.classList.add('header__heading');
 
-    this.header.appendChild(headingH1);
+    this.header.appendChild(this.container.cloneNode(true));
+    this.header.lastElementChild.classList.add('container--header');
+    this.header.lastElementChild.appendChild(headingH1);
   }
 
   /**
@@ -118,12 +125,20 @@ export default class BasicStructureGenerator {
     }
 
     for (let keyIndex = 1; keyIndex <= this.keysCount; keyIndex += 1) {
-      keyboard.appendChild(document.createElement('button'));
+      const key = document.createElement('button');
+      key.classList.add('keys__key-base');
+      key.innerHTML = this.inscriptions.en[keyIndex.toString(10)].symbolDefault.symbol;
+      if (this.inscriptions.en[keyIndex.toString(10)].symbolDefault.symbol === 'Backspace') {
+        key.classList.add('key-base--backspace');
+      }
+      keyboard.appendChild(key);
     }
 
     keyboardAndDisplay.appendChild(display);
     keyboardAndDisplay.appendChild(keyboard);
-    this.main.append(keyboardAndDisplay);
+    this.main.appendChild(this.container.cloneNode(true));
+    this.main.lastElementChild.classList.add('container--main');
+    this.main.lastElementChild.appendChild(keyboardAndDisplay);
   }
 
   /**
@@ -138,8 +153,12 @@ export default class BasicStructureGenerator {
     }
     footerParagraphs[0].innerText = 'Клавиатура создана для операционной системы Windows';
     footerParagraphs[1].innerText = 'Комбинация переключения языка: левые Ctrl + Shift';
+
+    this.footer.appendChild(this.container.cloneNode(true));
+    this.footer.lastElementChild.classList.add('container--footer');
+
     footerParagraphs.forEach((element) => {
-      this.footer.appendChild(element);
+      this.footer.lastElementChild.appendChild(element);
     });
   }
 
@@ -172,7 +191,7 @@ export default class BasicStructureGenerator {
     this.rootContainer.appendChild(this.footer);
   }
 
-  append() {
+  appendHTMLElements() {
     /* Append to DOM */
     this.root.appendChild(this.rootContainer);
   }

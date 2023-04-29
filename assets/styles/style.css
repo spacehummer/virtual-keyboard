@@ -23,6 +23,11 @@
     --dark-bg-for-buttons: #404040;
 }
 
+* {
+    box-sizing: border-box;
+    /* outline: solid red 1px; */
+}
+
 .root-container {
     /* Display */
     display: flex;
@@ -65,20 +70,47 @@
     --key-base-height: 48px;
     /* Display */
     display: grid;
-    grid-template-columns: repeat(15, var(--key-base-width));
+    grid-template-columns: repeat(calc(15 * 6 + 14), calc(var(--key-base-width) / 6));
+    grid-template-rows: repeat(calc(5 * 6 + 4), calc(var(--key-base-width) / 6));
     grid-auto-rows: var(--key-base-height);
     /*grid-auto-columns: var(--key-base-width);*/
-    row-gap: 8px;
-    column-gap: 8px;
+    /*row-gap: 8px;*/
+    /*column-gap: 8px;*/
+}
+
+.keys__column-gap {
+    /* Grid */
+    grid-column: span 1;
+}
+
+.keys__row-gap {
+    /* Grid */
+    grid-column: span 104;
+    height: 8px;
 }
 
 .keys__key-base {
+    /* Grid */
+    grid-row: span 6;
+    grid-column: span 6;
+    /* Visual */
+    border: none;
     /* Margins */
     padding: 0;
+    /*margin: 4px;*/
 }
 
 .key-base--backspace {
     /* Grid */
-    grid-row: 1 / 1;
-    grid-column: 14 / span 2;
+    grid-column: span 13;
+}
+
+.key-base--tab {
+    /* Grid */
+    grid-column: span 8;
+}
+
+.key-base--backslash {
+    /* Grid */
+    grid-column: span 11;
 }

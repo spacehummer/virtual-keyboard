@@ -309,17 +309,6 @@
       }
     },
     "29": {
-      "row": "2",
-      "symbolDefault": {
-        "symbol": "Del",
-        "name": "Delete key"
-      },
-      "symbolMod": {
-        "symbol": "none",
-        "name": "none"
-      }
-    },
-    "30": {
       "row": "3",
       "symbolDefault": {
         "symbol": "Caps Lock",
@@ -330,7 +319,7 @@
         "name": "none"
       }
     },
-    "31": {
+    "30": {
       "row": "3",
       "symbolDefault": {
         "symbol": "a",
@@ -341,7 +330,7 @@
         "name": "Latin Capital Letter A"
       }
     },
-    "32": {
+    "31": {
       "row": "3",
       "symbolDefault": {
         "symbol": "s",
@@ -352,7 +341,7 @@
         "name": "Latin Capital Letter S"
       }
     },
-    "33": {
+    "32": {
       "row": "3",
       "symbolDefault": {
         "symbol": "d",
@@ -363,7 +352,7 @@
         "name": "Latin Capital Letter D"
       }
     },
-    "34": {
+    "33": {
       "row": "3",
       "symbolDefault": {
         "symbol": "f",
@@ -374,7 +363,7 @@
         "name": "Latin Capital Letter F"
       }
     },
-    "35": {
+    "34": {
       "row": "3",
       "symbolDefault": {
         "symbol": "g",
@@ -385,7 +374,7 @@
         "name": "Latin Capital Letter G"
       }
     },
-    "36": {
+    "35": {
       "row": "3",
       "symbolDefault": {
         "symbol": "h",
@@ -396,7 +385,7 @@
         "name": "Latin Capital Letter H"
       }
     },
-    "37": {
+    "36": {
       "row": "3",
       "symbolDefault": {
         "symbol": "j",
@@ -407,7 +396,7 @@
         "name": "Latin Capital Letter J"
       }
     },
-    "38": {
+    "37": {
       "row": "3",
       "symbolDefault": {
         "symbol": "k",
@@ -418,7 +407,7 @@
         "name": "Latin Capital Letter K"
       }
     },
-    "39": {
+    "38": {
       "row": "3",
       "symbolDefault": {
         "symbol": "l",
@@ -429,7 +418,7 @@
         "name": "Latin Capital Letter L"
       }
     },
-    "40": {
+    "39": {
       "row": "3",
       "symbolDefault": {
         "symbol": ";",
@@ -440,7 +429,7 @@
         "name": "Colon"
       }
     },
-    "41": {
+    "40": {
       "row": "3",
       "symbolDefault": {
         "symbol": "&#39;",
@@ -451,7 +440,7 @@
         "name": "Quotation Mark"
       }
     },
-    "42": {
+    "41": {
       "row": "3",
       "symbolDefault": {
         "symbol": "Enter",
@@ -462,7 +451,7 @@
         "name": "none"
       }
     },
-    "43": {
+    "42": {
       "row": "4",
       "symbolDefault": {
         "symbol": "Shift",
@@ -473,7 +462,7 @@
         "name": "none"
       }
     },
-    "44": {
+    "43": {
       "row": "4",
       "symbolDefault": {
         "symbol": "z",
@@ -484,7 +473,7 @@
         "name": "Latin Capital Letter Z"
       }
     },
-    "45": {
+    "44": {
       "row": "4",
       "symbolDefault": {
         "symbol": "x",
@@ -495,7 +484,7 @@
         "name": "Latin Capital Letter X"
       }
     },
-    "46": {
+    "45": {
       "row": "4",
       "symbolDefault": {
         "symbol": "c",
@@ -506,7 +495,7 @@
         "name": "Latin Capital Letter C"
       }
     },
-    "47": {
+    "46": {
       "row": "4",
       "symbolDefault": {
         "symbol": "v",
@@ -517,7 +506,7 @@
         "name": "Latin Capital Letter V"
       }
     },
-    "48": {
+    "47": {
       "row": "4",
       "symbolDefault": {
         "symbol": "b",
@@ -528,7 +517,7 @@
         "name": "Latin Capital Letter B"
       }
     },
-    "49": {
+    "48": {
       "row": "4",
       "symbolDefault": {
         "symbol": "n",
@@ -539,7 +528,7 @@
         "name": "Latin Capital Letter N"
       }
     },
-    "50": {
+    "49": {
       "row": "4",
       "symbolDefault": {
         "symbol": "m",
@@ -550,7 +539,7 @@
         "name": "Latin Capital Letter M"
       }
     },
-    "51": {
+    "50": {
       "row": "4",
       "symbolDefault": {
         "symbol": ",",
@@ -561,7 +550,7 @@
         "name": "Less-Than Sign"
       }
     },
-    "52": {
+    "51": {
       "row": "4",
       "symbolDefault": {
         "symbol": ".",
@@ -572,7 +561,7 @@
         "name": "Greater-Than Sign"
       }
     },
-    "53": {
+    "52": {
       "row": "4",
       "symbolDefault": {
         "symbol": "&#47;",
@@ -581,6 +570,17 @@
       "symbolMod": {
         "symbol": "?",
         "name": "Question Mark"
+      }
+    },
+    "53": {
+      "row": "4",
+      "symbolDefault": {
+        "symbol": "Shift",
+        "name": "Right Shift key"
+      },
+      "symbolMod": {
+        "symbol": "none",
+        "name": "none"
       }
     },
     "54": {
@@ -595,10 +595,10 @@
       }
     },
     "55": {
-      "row": "4",
+      "row": "2",
       "symbolDefault": {
-        "symbol": "Shift",
-        "name": "Right Shift key"
+        "symbol": "Del",
+        "name": "Delete key"
       },
       "symbolMod": {
         "symbol": "none",

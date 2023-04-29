@@ -124,14 +124,44 @@ export default class BasicStructureGenerator {
       console.log('Keys count:', this.keysCount);
     }
 
-    for (let keyIndex = 1; keyIndex <= this.keysCount; keyIndex += 1) {
-      const key = document.createElement('button');
-      key.classList.add('keys__key-base');
-      key.innerHTML = this.inscriptions.en[keyIndex.toString(10)].symbolDefault.symbol;
-      if (this.inscriptions.en[keyIndex.toString(10)].symbolDefault.symbol === 'Backspace') {
-        key.classList.add('key-base--backspace');
+    for (let keyIndex = 1; keyIndex <= this.keysCount + (this.keysCount - 0); keyIndex += 1) {
+      if (keyIndex % 2 === 0) {
+        const keyNumberTmp = (keyIndex / 2).toString(10);
+        const key = document.createElement('button');
+        key.classList.add('keys__key-base');
+        key.innerHTML = this.inscriptions.en[keyNumberTmp].symbolDefault.symbol;
+        switch ((this.inscriptions.en[keyNumberTmp].symbolDefault.symbol)) {
+          case 'Backspace': {
+            key.classList.add('key-base--backspace');
+            break;
+          }
+          case 'Tab': {
+            key.classList.add('key-base--tab');
+            break;
+          }
+          case '&#92;': {
+            key.classList.add('key-base--backslash');
+            break;
+          }
+          default: {
+            break;
+          }
+        }
+        keyboard.appendChild(key);
+      } else if (
+        (keyIndex !== 1)
+        && (keyIndex !== 29)
+        && (keyIndex !== 59)
+        && (keyIndex !== 59)
+      ) {
+        const columnGapElement = document.createElement('div');
+        columnGapElement.classList.add('keys__column-gap');
+        keyboard.appendChild(columnGapElement);
+      } else if (keyIndex !== 1) {
+        const rowGapElement = document.createElement('div');
+        rowGapElement.classList.add('keys__row-gap');
+        keyboard.appendChild(rowGapElement);
       }
-      keyboard.appendChild(key);
     }
 
     keyboardAndDisplay.appendChild(display);

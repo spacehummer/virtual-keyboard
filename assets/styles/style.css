@@ -124,3 +124,43 @@
     /* Grid */
     grid-column: span 16;
 }
+
+.key-base--shift-left {
+    /* Grid */
+    grid-column: span 13;
+}
+
+.key-base--shift-right {
+    /* Grid */
+    grid-column: span 6;
+}
+
+.key-base--ctrl-left {
+    /* Grid */
+    grid-column: span 8;
+}
+
+.key-base--ctrl-right {
+    /* Grid */
+    grid-column: span 6;
+}
+
+.key-base--win-left {
+    /* Grid */
+    grid-column: span 8;
+}
+
+.key-base--alt-left {
+    /* Grid */
+    grid-column: span 8;
+}
+
+.key-base--alt-right {
+    /* Grid */
+    grid-column: span 6;
+}
+
+.key-base--space {
+    /* Grid */
+    grid-column: span 42;
+}

@@ -152,7 +152,38 @@ export default class BasicStructureGenerator {
             break;
           }
           case 'Shift': {
-            key.classList.add('key-base--enter');
+            if (this.inscriptions.en[keyNumberTmp].symbolDefault.name === 'Left Shift key') {
+              key.classList.add('key-base--shift-left');
+            }
+            if (this.inscriptions.en[keyNumberTmp].symbolDefault.name === 'Right Shift key') {
+              key.classList.add('key-base--shift-right');
+            }
+            break;
+          }
+          case 'Ctrl': {
+            if (this.inscriptions.en[keyNumberTmp].symbolDefault.name === 'Left Ctrl key') {
+              key.classList.add('key-base--ctrl-left');
+            }
+            if (this.inscriptions.en[keyNumberTmp].symbolDefault.name === 'Right Ctrl key') {
+              key.classList.add('key-base--ctrl-right');
+            }
+            break;
+          }
+          case 'Win': {
+            key.classList.add('key-base--win-left');
+            break;
+          }
+          case 'Alt': {
+            if (this.inscriptions.en[keyNumberTmp].symbolDefault.name === 'Left Alt key') {
+              key.classList.add('key-base--alt-left');
+            }
+            if (this.inscriptions.en[keyNumberTmp].symbolDefault.name === 'Right Alt key') {
+              key.classList.add('key-base--alt-right');
+            }
+            break;
+          }
+          case 'Space': {
+            key.classList.add('key-base--space');
             break;
           }
           default: {
@@ -165,6 +196,7 @@ export default class BasicStructureGenerator {
         && (keyIndex !== 29)
         && (keyIndex !== 57)
         && (keyIndex !== 83)
+        && (keyIndex !== 111)
       ) {
         const columnGapElement = document.createElement('div');
         columnGapElement.classList.add('keys__column-gap');

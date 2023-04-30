@@ -663,6 +663,17 @@
     "61": {
       "row": "5",
       "symbolDefault": {
+        "symbol": "Ctrl",
+        "name": "Right Ctrl key"
+      },
+      "symbolMod": {
+        "symbol": "none",
+        "name": "none"
+      }
+    },
+    "62": {
+      "row": "5",
+      "symbolDefault": {
         "symbol": "&#9668;",
         "name": "Left Arrow key"
       },
@@ -671,7 +682,7 @@
         "name": "none"
       }
     },
-    "62": {
+    "63": {
       "row": "5",
       "symbolDefault": {
         "symbol": "&#9660;",
@@ -682,22 +693,11 @@
         "name": "none"
       }
     },
-    "63": {
+    "64": {
       "row": "5",
       "symbolDefault": {
         "symbol": "&#9658;",
         "name": "Right Arrow key"
-      },
-      "symbolMod": {
-        "symbol": "none",
-        "name": "none"
-      }
-    },
-    "64": {
-      "row": "5",
-      "symbolDefault": {
-        "symbol": "Ctrl",
-        "name": "Right Ctrl key"
       },
       "symbolMod": {
         "symbol": "none",

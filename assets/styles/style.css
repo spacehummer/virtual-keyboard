@@ -114,3 +114,13 @@
     /* Grid */
     grid-column: span 11;
 }
+
+.key-base--capslock {
+    /* Grid */
+    grid-column: span 10;
+}
+
+.key-base--enter {
+    /* Grid */
+    grid-column: span 16;
+}

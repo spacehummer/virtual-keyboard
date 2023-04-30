@@ -143,6 +143,18 @@ export default class BasicStructureGenerator {
             key.classList.add('key-base--backslash');
             break;
           }
+          case 'Caps Lock': {
+            key.classList.add('key-base--capslock');
+            break;
+          }
+          case 'Enter': {
+            key.classList.add('key-base--enter');
+            break;
+          }
+          case 'Shift': {
+            key.classList.add('key-base--enter');
+            break;
+          }
           default: {
             break;
           }
@@ -151,8 +163,8 @@ export default class BasicStructureGenerator {
       } else if (
         (keyIndex !== 1)
         && (keyIndex !== 29)
-        && (keyIndex !== 59)
-        && (keyIndex !== 59)
+        && (keyIndex !== 57)
+        && (keyIndex !== 83)
       ) {
         const columnGapElement = document.createElement('div');
         columnGapElement.classList.add('keys__column-gap');

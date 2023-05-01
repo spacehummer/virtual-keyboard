@@ -59,26 +59,43 @@ export default class KeyboardLogicManager {
     this.keyboardEventHandlerBounded = this.keyboardEventHandler.bind(this);
   }
 
-  keyboardEventHandler(event) {
+  searchKeyAndActions(searchingText, callback) {
+    /* Find hitted key by XPath. */
+    const pressedKey = document.evaluate(
+      `//button[text() = '${searchingText}']`,
+      document,
+      null,
+      XPathResult.FIRST_ORDERED_NODE_TYPE,
+      null,
+    ).singleNodeValue;
+    if (pressedKey) {
+      callback(pressedKey);
+    } else if (this.verboseLvl > 0) {
+      console.log('!!!! ERROR: cant find virtual key by `event.code!`');
+    }
+  }
 
+  keyboardEventHandler(event) {
     if (this.verboseLvl > 0) {
       console.log('---- Key event info:', event);
     }
 
+    function changeKeyState(key) {
+      key.classList.add('key-base--pressed');
+    }
+
     const lastKeyHit = event.key;
     if (!this.keysException.includes(lastKeyHit)) {
-      /* Find hitted key by XPath. */
-      const hittedKey = document.evaluate(
-        `//button[text() = '${event.key}']`,
-        document,
-        null,
-        XPathResult.FIRST_ORDERED_NODE_TYPE,
-        null,
-      ).singleNodeValue;
-      if (hittedKey) {
-        hittedKey.style.backgroundColor = 'red';
-      } else if (this.verboseLvl > 0) {
-        console.log('!!!! ERROR: cant find virtual key by `event.code!`');
+      this.searchKeyAndActions(event.key, changeKeyState);
+    } else if (this.keysException.includes(lastKeyHit)) {
+      switch (event.key) {
+        case 'CapsLock': {
+          this.searchKeyAndActions('Caps Lock', changeKeyState);
+          break;
+        }
+        default: {
+          break;
+        }
       }
     }
   }

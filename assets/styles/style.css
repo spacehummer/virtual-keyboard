@@ -93,11 +93,38 @@
     /* Grid */
     grid-row: span 6;
     grid-column: span 6;
+    /* Font */
+    font-size: 15px;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
     /* Visual */
     border: none;
+    background-color: rgb(173, 173, 173);
+    /* Animation */
+    transition: 800ms;
     /* Margins */
     padding: 0;
     /*margin: 4px;*/
+}
+
+.keys__key-base:hover {
+    /* Font */
+    color: rgb(255, 208, 20);
+    text-shadow: 0 0 1px rgb(209, 171, 17);
+    /* Visual */
+    background-color: rgb(162, 162, 162);
+    /* Animation */
+    transition: 500ms;
+}
+
+.keys__key-base:active,
+.key-base--pressed,
+.keys__key-base:hover.key-base--pressed {
+    background-color: rgb(138, 138, 138);
+    color: rgb(20, 255, 185);
+    text-shadow: 0 0 4px rgb(16, 210, 153);
+    border: 2px solid rgb(114, 114, 114);
+    transition: 300ms;
 }
 
 .key-base--backspace {

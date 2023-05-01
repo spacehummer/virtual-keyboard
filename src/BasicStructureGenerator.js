@@ -1,7 +1,3 @@
-// ESLint rules per file start
-/* eslint-disable no-console */
-// ESLint rules per file end
-
 /* Import JSON with keys inscriptions and other keys info */
 import inscriptions from '../assets/js/inscriptions.json';
 
@@ -151,7 +147,7 @@ export default class BasicStructureGenerator {
     keyboard.classList.add('keyboard__keys-container');
 
     if (this.verboseLvl > 0) {
-      console.log('Keys count:', this.keysCount);
+      // Console log with Keys count was here.
     }
 
     /* Generate keys, column-gaps and row-gaps, as grid elements. */
@@ -278,7 +274,7 @@ export default class BasicStructureGenerator {
    */
   generateAll() {
     if (this.verboseLvl > 0) {
-      console.log('**** Generating basic HTML layout... ****');
+      // Console log with message '**** Generating basic HTML layout... ****' was here.
     }
 
     /* For debug */

@@ -120,13 +120,13 @@ export default class KeyboardLogicManager {
     if (pressedKey) {
       callback(pressedKey, this.lastKeyEvent);
     } else if (this.verboseLvl > 0) {
-      console.log('!!!! ERROR: cant find virtual key by `event.code!`');
+      /* Console log with error message was here. */
     }
   }
 
   keyboardEventHandler(event) {
     if (this.verboseLvl > 0) {
-      console.log('---- Key event info:', event);
+      /* Console log with event.key info message was here. */
     }
 
     this.lastKeyEvent = event;

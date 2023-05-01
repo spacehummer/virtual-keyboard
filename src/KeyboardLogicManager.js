@@ -25,6 +25,8 @@ export default class KeyboardLogicManager {
 
   keysException;
 
+  keysAlphabeticUpperCase;
+
   /**
    * Keyboard logic class constructor.
    * @param pageRootToken {String}  - token for App page root element.
@@ -54,6 +56,12 @@ export default class KeyboardLogicManager {
       'ArrowLeft',
       'ArrowRight',
     ];
+
+    this.keysAlphabeticUpperCase = [
+      'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+      'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+      'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
+      'Y', 'Z'];
 
     /* Bind class context for listeners handlers, what defined as method of this class. */
     this.keyboardEventHandlerBounded = this.keyboardEventHandler.bind(this);
@@ -97,9 +105,12 @@ export default class KeyboardLogicManager {
       key.classList.add('key-base--pressed');
     }
 
-    const lastKeyHit = event.key;
+    let lastKeyHit = event.key;
     if (!this.keysException.includes(lastKeyHit)) {
-      this.searchKeyAndActions(event.key, changeKeyState);
+      if (this.keysAlphabeticUpperCase.includes(lastKeyHit)) {
+        lastKeyHit = lastKeyHit.toLowerCase();
+      }
+      this.searchKeyAndActions(lastKeyHit, changeKeyState);
     } else if (this.keysException.includes(lastKeyHit)) {
       switch (event.key) {
         case 'CapsLock': {

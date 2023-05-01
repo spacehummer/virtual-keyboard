@@ -134,10 +134,23 @@ export default class KeyboardLogicManager {
     /* Prevent default behaviour for buttons */
     event.preventDefault();
 
+    function virtualKeyboardSimulateClickOn(key) {
+      const clickSimulatedEvent = new MouseEvent(
+        'click',
+        {
+          view: window,
+          bubbles: true,
+          cancelable: false,
+        },
+      );
+      key.dispatchEvent(clickSimulatedEvent);
+    }
+
     function changeKeyState(key, eventLocal) {
       /* Change visual */
       if (eventLocal.type === 'keydown') {
         key.classList.add('key-base--pressed');
+        virtualKeyboardSimulateClickOn(key);
       } else if (eventLocal.type === 'keyup') {
         key.classList.remove('key-base--pressed');
       }

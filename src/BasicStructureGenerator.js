@@ -5,6 +5,12 @@
 /* Import JSON with keys inscriptions and other keys info */
 import inscriptions from '../assets/js/inscriptions.json';
 
+/**
+ * TODO: rework JSON. Every button need one unique identifier. Maybe, event.code?
+ *       (not deprecated event.keyCode or event.which!!!)
+ *       After it, rework relevant class methods.
+ * */
+
 // <editor-fold desc="Keys Object JSDoc">
 /**
  * @typedef   {Object} keyInscriptions  - Object, parsed from JSON with info about keys.

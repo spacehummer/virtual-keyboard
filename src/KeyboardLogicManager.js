@@ -14,6 +14,10 @@ export default class KeyboardLogicManager {
   keyboard;
   // </editor-fold desc="Elements">
 
+  // <editor-fold desc="Event Handlers Bounded to class context">
+  keyboardEventHandlerBounded;
+  // </editor-fold>
+
   /**
    * Keyboard logic class constructor.
    * @param pageRootToken {String}  - token for App page root element.
@@ -25,5 +29,19 @@ export default class KeyboardLogicManager {
 
     this.keyboardToken = keyboardToken;
     this.keyboard = document.querySelector(this.keyboardToken);
+
+    /* Bind class context for listeners handlers, what defined as method of this class. */
+    this.keyboardEventHandlerBounded = this.keyboardEventHandler.bind(this);
+  }
+
+  keyboardEventHandler(event) {
+    console.log(event);
+  }
+
+  listenPhysicalKeyboard() {
+    document.addEventListener(
+      'keydown',
+      this.keyboardEventHandlerBounded,
+    );
   }
 }

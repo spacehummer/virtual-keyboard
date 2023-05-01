@@ -61,5 +61,7 @@ basicStructureGenerator.appendHTMLElements();
 /* Create keyboard work logic class instance.  */
 const keyboardManager = new KeyboardLogicManager(
   'body',
-  'keyboard-and-display',
+  '.keyboard-and-display',
 );
+
+keyboardManager.listenPhysicalKeyboard();

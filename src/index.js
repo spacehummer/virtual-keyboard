@@ -51,6 +51,7 @@ function windowOnLoadWork() {
   );
 
   keyboardManager.listenPhysicalKeyboard();
+  keyboardManager.listenVirtualKeyboard();
 }
 
 /* Start onload work */

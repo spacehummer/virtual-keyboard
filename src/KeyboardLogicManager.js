@@ -12,10 +12,14 @@ export default class KeyboardLogicManager {
   pageRoot;
 
   keyboard;
+
+  textField;
   // </editor-fold desc="Elements">
 
   // <editor-fold desc="Event Handlers Bounded to class context">
   keyboardEventHandlerBounded;
+
+  virtualKeyboardEventHandlerBounded;
   // </editor-fold>
 
   /**
@@ -23,11 +27,15 @@ export default class KeyboardLogicManager {
    */
   verboseLvl;
 
+  specialKeys;
+
   keysException;
 
   keysAlphabeticUpperCase;
 
   lastKeyEvent;
+
+  textFieldChangeEvent;
 
   /**
    * Keyboard logic class constructor.
@@ -43,6 +51,17 @@ export default class KeyboardLogicManager {
 
     this.keyboardToken = keyboardToken;
     this.keyboard = document.querySelector(this.keyboardToken);
+
+    this.textField = this.keyboard.querySelector('.keyboard__display');
+
+    this.specialKeys = [
+      'Shift',
+      'Caps Lock',
+      'Ctrl',
+      'Win',
+      'Alt',
+      'Tab',
+    ];
 
     this.keysException = [
       'CapsLock',
@@ -69,6 +88,11 @@ export default class KeyboardLogicManager {
 
     /* Bind class context for listeners handlers, what defined as method of this class. */
     this.keyboardEventHandlerBounded = this.keyboardEventHandler.bind(this);
+
+    this.virtualKeyboardEventHandlerBounded = this.virtualKeyboardEventHandler.bind(this);
+
+    /* Make event for change text area */
+    this.textFieldChangeEvent = new Event('change');
   }
 
   searchKeyAndActions(searchingText, callback, number = 0) {
@@ -193,6 +217,66 @@ export default class KeyboardLogicManager {
         }
       }
     }
+  }
+
+  deleteLastSymbol() {
+    this.textField.value = this.textField.value.split('').slice(0, -1).join('');
+    this.textField.dispatchEvent(this.textFieldChangeEvent);
+  }
+
+  deleteAll() {
+    this.textField.value = '';
+    this.textField.dispatchEvent(this.textFieldChangeEvent);
+  }
+
+  inputSymbol(symbol) {
+    this.textField.value += symbol;
+    this.textField.dispatchEvent(this.textFieldChangeEvent);
+  }
+
+  inputLineBreak() {
+    this.textField.value += '\n';
+    this.textField.dispatchEvent(this.textFieldChangeEvent);
+  }
+
+  inputSpace() {
+    this.textField.value += ' ';
+    this.textField.dispatchEvent(this.textFieldChangeEvent);
+  }
+
+  virtualKeyboardEventHandler(event) {
+    const keyInscription = event.srcElement.innerText;
+
+    if (!this.specialKeys.includes(keyInscription)) {
+      switch (keyInscription) {
+        case 'Backspace': {
+          this.deleteLastSymbol();
+          break;
+        }
+        case 'Del': {
+          this.deleteAll();
+          break;
+        }
+        case 'Space': {
+          this.inputSpace();
+          break;
+        }
+        case 'Enter': {
+          this.inputLineBreak();
+          break;
+        }
+        default: {
+          this.inputSymbol(keyInscription);
+          break;
+        }
+      }
+    }
+  }
+
+  listenVirtualKeyboard() {
+    document.querySelectorAll('.keys__key-base').forEach((element) => {
+      element.addEventListener('click', this.virtualKeyboardEventHandlerBounded);
+    });
   }
 
   listenPhysicalKeyboard() {

@@ -64,6 +64,7 @@ function windowOnLoadWork() {
   const keyboardManager = new KeyboardLogicManager(
     'body',
     '.keyboard-and-display',
+    1,
   );
 
   keyboardManager.listenPhysicalKeyboard();

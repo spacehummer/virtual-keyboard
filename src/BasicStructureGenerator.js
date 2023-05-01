@@ -84,7 +84,7 @@ export default class BasicStructureGenerator {
   /**
    * Basic structure generator constructor.
    * @param rootToken   {String}  - Token of root element, in that we add new elements.
-   * @param verboseLvl  {number}  - verbose LVL for manage output to console
+   * @param verboseLvl  {number}  - verbose LVL for manage output to console.
    */
   constructor(rootToken, verboseLvl = 0) {
     this.verboseLvl = verboseLvl;

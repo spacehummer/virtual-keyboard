@@ -30,7 +30,7 @@ import BasicStructureGenerator from './BasicStructureGenerator';
 /**
  * Keyboard work logic class import.
  */
-import KeyboardLogicManager from "./KeyboardLogicManager";
+import KeyboardLogicManager from './KeyboardLogicManager';
 
 /* Import Pics */
 // Example: import birdPlaceholder from '../assets/images/raven_01.png';
@@ -51,17 +51,25 @@ const debug = debugHardcode ? debugHardcode : debugFlag;
 /* Constants and vars of states and other things. */
 let languageGeneral = 'en';
 
-/* Create basic structure generator instance. */
-const basicStructureGenerator = new BasicStructureGenerator('body', debug);
+/* Onload work function: entry point for most code. */
+function windowOnLoadWork() {
+  /* Create basic structure generator instance. */
+  const basicStructureGenerator = new BasicStructureGenerator('body', debug);
 
-/* Generate and append generated elements to DOM. */
-basicStructureGenerator.generateAll();
-basicStructureGenerator.appendHTMLElements();
+  /* Generate and append generated elements to DOM. */
+  basicStructureGenerator.generateAll();
+  basicStructureGenerator.appendHTMLElements();
 
-/* Create keyboard work logic class instance.  */
-const keyboardManager = new KeyboardLogicManager(
-  'body',
-  '.keyboard-and-display',
-);
+  /* Create keyboard work logic class instance.  */
+  const keyboardManager = new KeyboardLogicManager(
+    'body',
+    '.keyboard-and-display',
+  );
 
-keyboardManager.listenPhysicalKeyboard();
+  keyboardManager.listenPhysicalKeyboard();
+}
+
+/* Start onload work */
+window.addEventListener('load', () => {
+  windowOnLoadWork();
+});

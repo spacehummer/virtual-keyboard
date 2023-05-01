@@ -16,6 +16,7 @@ export default class KeyboardLogicManager {
 
   /**
    * Keyboard logic class constructor.
+   * @param pageRootToken {String}  - token for App page root element.
    * @param keyboardToken {String}  - token for keyboard root element.
    */
   constructor(pageRootToken, keyboardToken) {

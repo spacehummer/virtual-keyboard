@@ -46,7 +46,9 @@ const debug = debugHardcode ? debugHardcode : debugFlag;
 /* Constants and vars of states and other things. */
 let languageGeneral = 'en';
 
+/* Create basic structure generator instance. */
 const basicStructureGenerator = new BasicStructureGenerator('body', debug);
 
+/* Generate and append generated elements to DOM. */
 basicStructureGenerator.generateAll();
 basicStructureGenerator.appendHTMLElements();

@@ -2,6 +2,7 @@
 /* eslint-disable no-console */
 // ESLint rules per file end
 
+/* Import JSON with keys inscriptions and other keys info */
 import inscriptions from '../assets/js/inscriptions.json';
 
 // <editor-fold desc="Keys Object JSDoc">
@@ -64,21 +65,34 @@ export default class BasicStructureGenerator {
 
   inscriptions;
 
+  /**
+   * Keyboard keys count.
+   */
   keysCount;
 
+  /**
+   * Verbose LVL for manage output to console.
+   */
   verboseLvl;
 
+  /**
+   * Basic structure generator constructor.
+   * @param rootToken   {String}  - Token of root element, in that we add new elements.
+   * @param verboseLvl  {number}  - verbose LVL for manage output to console
+   */
   constructor(rootToken, verboseLvl = 0) {
     this.verboseLvl = verboseLvl;
 
     this.rootToken = rootToken;
     this.root = document.querySelector(rootToken);
 
+    /* Initialise fields for main structure elements. */
     this.rootContainer = null;
     this.header = null;
     this.main = null;
     this.footer = null;
 
+    /* Create content container for every outer structure element. */
     this.container = document.createElement('div');
     this.container.classList.add('container');
 
@@ -94,13 +108,16 @@ export default class BasicStructureGenerator {
    * Generate header HTML Element and its basic content.
    */
   generateHeader() {
+    /* Generate header */
     this.header = document.createElement('header');
     this.header.classList.add('header');
 
+    /* Generate heading */
     const headingH1 = document.createElement('h1');
     headingH1.innerText = 'Virtual keyboard';
     headingH1.classList.add('header__heading');
 
+    /* Append heading and container */
     this.header.appendChild(this.container.cloneNode(true));
     this.header.lastElementChild.classList.add('container--header');
     this.header.lastElementChild.appendChild(headingH1);
@@ -110,9 +127,11 @@ export default class BasicStructureGenerator {
    * Generate main HTML Element and its basic content.
    */
   generateMain() {
+    /* Generate main */
     this.main = document.createElement('main');
     this.main.classList.add('main');
 
+    /* Generate basic containers and display textarea */
     const keyboardAndDisplay = document.createElement('div');
     keyboardAndDisplay.classList.add('keyboard-and-display');
     const display = document.createElement('textarea');
@@ -124,12 +143,15 @@ export default class BasicStructureGenerator {
       console.log('Keys count:', this.keysCount);
     }
 
+    /* Generate keys, column-gaps and row-gaps, as grid elements. */
     for (let keyIndex = 1; keyIndex <= this.keysCount + (this.keysCount - 0); keyIndex += 1) {
       if (keyIndex % 2 === 0) {
         const keyNumberTmp = (keyIndex / 2).toString(10);
+        /* Add key base. */
         const key = document.createElement('button');
         key.classList.add('keys__key-base');
         key.innerHTML = this.inscriptions.en[keyNumberTmp].symbolDefault.symbol;
+        /* Add styles for keys with non-standard sizes. */
         switch ((this.inscriptions.en[keyNumberTmp].symbolDefault.symbol)) {
           case 'Backspace': {
             key.classList.add('key-base--backspace');
@@ -198,16 +220,19 @@ export default class BasicStructureGenerator {
         && (keyIndex !== 83)
         && (keyIndex !== 111)
       ) {
+        /* Add column-gap, as div in grid. */
         const columnGapElement = document.createElement('div');
         columnGapElement.classList.add('keys__column-gap');
         keyboard.appendChild(columnGapElement);
       } else if (keyIndex !== 1) {
+        /* Add row-gap, as div in grid. */
         const rowGapElement = document.createElement('div');
         rowGapElement.classList.add('keys__row-gap');
         keyboard.appendChild(rowGapElement);
       }
     }
 
+    /* Append container, generated keyboard and display to main */
     keyboardAndDisplay.appendChild(display);
     keyboardAndDisplay.appendChild(keyboard);
     this.main.appendChild(this.container.cloneNode(true));
@@ -219,6 +244,7 @@ export default class BasicStructureGenerator {
    * Generate footer HTML Element and its basic content.
    */
   generateFooter() {
+    /* Generate footer and paragraphs */
     this.footer = document.createElement('footer');
     this.footer.classList.add('footer');
     const footerParagraphs = [];
@@ -228,9 +254,9 @@ export default class BasicStructureGenerator {
     footerParagraphs[0].innerText = 'Клавиатура создана для операционной системы Windows';
     footerParagraphs[1].innerText = 'Комбинация переключения языка: левые Ctrl + Shift';
 
+    /* Append container and paragraphs */
     this.footer.appendChild(this.container.cloneNode(true));
     this.footer.lastElementChild.classList.add('container--footer');
-
     footerParagraphs.forEach((element) => {
       this.footer.lastElementChild.appendChild(element);
     });

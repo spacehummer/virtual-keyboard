@@ -101,6 +101,9 @@ export default class KeyboardLogicManager {
       console.log('---- Key event info:', event);
     }
 
+    /* Prevent default behaviour for buttons */
+    event.preventDefault();
+
     function changeKeyState(key) {
       key.classList.add('key-base--pressed');
     }

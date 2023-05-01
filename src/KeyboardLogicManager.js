@@ -59,15 +59,28 @@ export default class KeyboardLogicManager {
     this.keyboardEventHandlerBounded = this.keyboardEventHandler.bind(this);
   }
 
-  searchKeyAndActions(searchingText, callback) {
+  searchKeyAndActions(searchingText, callback, number = 0) {
     /* Find hitted key by XPath. */
-    const pressedKey = document.evaluate(
-      `//button[text() = '${searchingText}']`,
-      document,
-      null,
-      XPathResult.FIRST_ORDERED_NODE_TYPE,
-      null,
-    ).singleNodeValue;
+    let pressedKey = null;
+    if (number === 0) {
+      pressedKey = document.evaluate(
+        `//button[text() = "${searchingText}"]`,
+        document,
+        null,
+        XPathResult.FIRST_ORDERED_NODE_TYPE,
+        null,
+      ).singleNodeValue;
+    }
+    if (number === 1) {
+      pressedKey = document.evaluate(
+        `//button[text() = "${searchingText}"]`,
+        document,
+        null,
+        XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
+        null,
+      );
+      pressedKey = pressedKey.snapshotItem(number);
+    }
     if (pressedKey) {
       callback(pressedKey);
     } else if (this.verboseLvl > 0) {
@@ -93,6 +106,63 @@ export default class KeyboardLogicManager {
           this.searchKeyAndActions('Caps Lock', changeKeyState);
           break;
         }
+        case '\'': {
+          this.searchKeyAndActions('\'', changeKeyState);
+          break;
+        }
+        case 'Shift': {
+          if (event.code === 'ShiftLeft') {
+            this.searchKeyAndActions('Shift', changeKeyState);
+          } else {
+            this.searchKeyAndActions('Shift', changeKeyState, 1);
+          }
+          break;
+        }
+        case 'Delete': {
+          this.searchKeyAndActions('Del', changeKeyState);
+          break;
+        }
+        case 'Control': {
+          if (event.code === 'ControlLeft') {
+            this.searchKeyAndActions('Ctrl', changeKeyState);
+          } else {
+            this.searchKeyAndActions('Ctrl', changeKeyState, 1);
+          }
+          break;
+        }
+        case 'Meta': {
+          this.searchKeyAndActions('Win', changeKeyState);
+          break;
+        }
+        case 'Alt': {
+          if (event.code === 'AltLeft') {
+            this.searchKeyAndActions('Alt', changeKeyState);
+          } else {
+            this.searchKeyAndActions('Alt', changeKeyState, 1);
+          }
+          break;
+        }
+        case ' ': {
+          this.searchKeyAndActions('Space', changeKeyState);
+          break;
+        }
+        case 'ArrowUp': {
+          this.searchKeyAndActions('▲', changeKeyState);
+          break;
+        }
+        case 'ArrowDown': {
+          this.searchKeyAndActions('▼', changeKeyState);
+          break;
+        }
+        case 'ArrowLeft': {
+          this.searchKeyAndActions('◄', changeKeyState);
+          break;
+        }
+        case 'ArrowRight': {
+          this.searchKeyAndActions('►', changeKeyState);
+          break;
+        }
+
         default: {
           break;
         }

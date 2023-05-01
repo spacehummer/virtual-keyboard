@@ -81,6 +81,10 @@
     /*grid-auto-columns: var(--key-base-width);*/
     /*row-gap: 8px;*/
     /*column-gap: 8px;*/
+    /* Size */
+    width: fit-content;
+    /* Margins */
+    margin: 0 auto;
 }
 
 .keys__column-gap {

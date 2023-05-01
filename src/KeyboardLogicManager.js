@@ -27,6 +27,8 @@ export default class KeyboardLogicManager {
 
   keysAlphabeticUpperCase;
 
+  lastKeyEvent;
+
   /**
    * Keyboard logic class constructor.
    * @param pageRootToken {String}  - token for App page root element.
@@ -63,6 +65,8 @@ export default class KeyboardLogicManager {
       'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
       'Y', 'Z'];
 
+    this.lastKeyEvent = null;
+
     /* Bind class context for listeners handlers, what defined as method of this class. */
     this.keyboardEventHandlerBounded = this.keyboardEventHandler.bind(this);
   }
@@ -90,7 +94,7 @@ export default class KeyboardLogicManager {
       pressedKey = pressedKey.snapshotItem(number);
     }
     if (pressedKey) {
-      callback(pressedKey);
+      callback(pressedKey, this.lastKeyEvent);
     } else if (this.verboseLvl > 0) {
       console.log('!!!! ERROR: cant find virtual key by `event.code!`');
     }
@@ -101,11 +105,18 @@ export default class KeyboardLogicManager {
       console.log('---- Key event info:', event);
     }
 
+    this.lastKeyEvent = event;
+
     /* Prevent default behaviour for buttons */
     event.preventDefault();
 
-    function changeKeyState(key) {
-      key.classList.add('key-base--pressed');
+    function changeKeyState(key, eventLocal) {
+      /* Change visual */
+      if (eventLocal.type === 'keydown') {
+        key.classList.add('key-base--pressed');
+      } else if (eventLocal.type === 'keyup') {
+        key.classList.remove('key-base--pressed');
+      }
     }
 
     let lastKeyHit = event.key;
@@ -187,6 +198,11 @@ export default class KeyboardLogicManager {
   listenPhysicalKeyboard() {
     document.addEventListener(
       'keydown',
+      this.keyboardEventHandlerBounded,
+    );
+
+    document.addEventListener(
+      'keyup',
       this.keyboardEventHandlerBounded,
     );
   }

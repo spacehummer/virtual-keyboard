@@ -81,13 +81,18 @@ export default class BasicStructureGenerator {
    */
   verboseLvl;
 
+  language;
+
   /**
    * Basic structure generator constructor.
    * @param rootToken   {String}  - Token of root element, in that we add new elements.
+   * @param language    {String}  - Current App language.
    * @param verboseLvl  {number}  - verbose LVL for manage output to console.
    */
-  constructor(rootToken, verboseLvl = 0) {
+  constructor(rootToken, language, verboseLvl = 0) {
     this.verboseLvl = verboseLvl;
+
+    this.language = language;
 
     this.rootToken = rootToken;
     this.root = document.querySelector(rootToken);
@@ -107,7 +112,7 @@ export default class BasicStructureGenerator {
      * @type keyInscriptions
      */
     this.inscriptions = inscriptions;
-    this.keysCount = Object.keys(this.inscriptions.en).length;
+    this.keysCount = Object.keys(this.inscriptions[this.language]).length;
   }
 
   /**
@@ -156,9 +161,9 @@ export default class BasicStructureGenerator {
         /* Add key base. */
         const key = document.createElement('button');
         key.classList.add('keys__key-base');
-        key.innerHTML = this.inscriptions.en[keyNumberTmp].symbolDefault.symbol;
+        key.innerHTML = this.inscriptions[this.language][keyNumberTmp].symbolDefault.symbol;
         /* Add styles for keys with non-standard sizes. */
-        switch ((this.inscriptions.en[keyNumberTmp].symbolDefault.symbol)) {
+        switch ((this.inscriptions[this.language][keyNumberTmp].symbolDefault.symbol)) {
           case 'Backspace': {
             key.classList.add('key-base--backspace');
             break;
@@ -180,19 +185,19 @@ export default class BasicStructureGenerator {
             break;
           }
           case 'Shift': {
-            if (this.inscriptions.en[keyNumberTmp].symbolDefault.name === 'Left Shift key') {
+            if (this.inscriptions[this.language][keyNumberTmp].symbolDefault.name === 'Left Shift key') {
               key.classList.add('key-base--shift-left');
             }
-            if (this.inscriptions.en[keyNumberTmp].symbolDefault.name === 'Right Shift key') {
+            if (this.inscriptions[this.language][keyNumberTmp].symbolDefault.name === 'Right Shift key') {
               key.classList.add('key-base--shift-right');
             }
             break;
           }
           case 'Ctrl': {
-            if (this.inscriptions.en[keyNumberTmp].symbolDefault.name === 'Left Ctrl key') {
+            if (this.inscriptions[this.language][keyNumberTmp].symbolDefault.name === 'Left Ctrl key') {
               key.classList.add('key-base--ctrl-left');
             }
-            if (this.inscriptions.en[keyNumberTmp].symbolDefault.name === 'Right Ctrl key') {
+            if (this.inscriptions[this.language][keyNumberTmp].symbolDefault.name === 'Right Ctrl key') {
               key.classList.add('key-base--ctrl-right');
             }
             break;
@@ -202,10 +207,10 @@ export default class BasicStructureGenerator {
             break;
           }
           case 'Alt': {
-            if (this.inscriptions.en[keyNumberTmp].symbolDefault.name === 'Left Alt key') {
+            if (this.inscriptions[this.language][keyNumberTmp].symbolDefault.name === 'Left Alt key') {
               key.classList.add('key-base--alt-left');
             }
-            if (this.inscriptions.en[keyNumberTmp].symbolDefault.name === 'Right Alt key') {
+            if (this.inscriptions[this.language][keyNumberTmp].symbolDefault.name === 'Right Alt key') {
               key.classList.add('key-base--alt-right');
             }
             break;

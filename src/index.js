@@ -1,26 +1,5 @@
 // ESLint rules per file start
-/* eslint-disable no-console */
 // ESLint rules per file end
-
-/**
- * Utility's import.
- */
-/* Example: */
-// import {
-//   /* Functions: */
-// getRandomInt,
-//   colorGenerateRandomHex,
-//   shuffleFisherYates,
-//   addAllFieldsAsTextNode,
-// } from "./utils";
-
-/**
- * App phrase content import.
- */
-import {
-  /* Objects and vars: */
-  phrase,
-} from './content';
 
 /**
  * Basic layout generator class import.
@@ -49,12 +28,16 @@ const debugFlag = 1;
 const debug = debugHardcode ? debugHardcode : debugFlag;
 
 /* Constants and vars of states and other things. */
-let languageGeneral = 'en';
+const languageGeneral = 'en';
 
 /* Onload work function: entry point for most code. */
 function windowOnLoadWork() {
   /* Create basic structure generator instance. */
-  const basicStructureGenerator = new BasicStructureGenerator('body', debug);
+  const basicStructureGenerator = new BasicStructureGenerator(
+    'body',
+    languageGeneral,
+    debug,
+  );
 
   /* Generate and append generated elements to DOM. */
   basicStructureGenerator.generateAll();

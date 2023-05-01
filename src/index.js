@@ -23,9 +23,14 @@ import {
 } from './content';
 
 /**
- * Basic layout generator import.
+ * Basic layout generator class import.
  */
 import BasicStructureGenerator from './BasicStructureGenerator';
+
+/**
+ * Keyboard work logic class import.
+ */
+import KeyboardLogicManager from "./KeyboardLogicManager";
 
 /* Import Pics */
 // Example: import birdPlaceholder from '../assets/images/raven_01.png';
@@ -52,3 +57,9 @@ const basicStructureGenerator = new BasicStructureGenerator('body', debug);
 /* Generate and append generated elements to DOM. */
 basicStructureGenerator.generateAll();
 basicStructureGenerator.appendHTMLElements();
+
+/* Create keyboard work logic class instance.  */
+const keyboardManager = new KeyboardLogicManager(
+  'body',
+  'keyboard-and-display',
+);

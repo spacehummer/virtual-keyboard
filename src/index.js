@@ -1,6 +1,3 @@
-// ESLint rules per file start
-// ESLint rules per file end
-
 /**
  * Basic layout generator class import.
  */
@@ -51,6 +48,7 @@ function windowOnLoadWork() {
   );
 
   keyboardManager.listenPhysicalKeyboard();
+  keyboardManager.listenVirtualKeyboard();
 }
 
 /* Start onload work */

@@ -12,10 +12,14 @@ export default class KeyboardLogicManager {
   pageRoot;
 
   keyboard;
+
+  textField;
   // </editor-fold desc="Elements">
 
   // <editor-fold desc="Event Handlers Bounded to class context">
   keyboardEventHandlerBounded;
+
+  virtualKeyboardEventHandlerBounded;
   // </editor-fold>
 
   /**
@@ -23,9 +27,15 @@ export default class KeyboardLogicManager {
    */
   verboseLvl;
 
+  specialKeys;
+
   keysException;
 
   keysAlphabeticUpperCase;
+
+  lastKeyEvent;
+
+  textFieldChangeEvent;
 
   /**
    * Keyboard logic class constructor.
@@ -41,6 +51,17 @@ export default class KeyboardLogicManager {
 
     this.keyboardToken = keyboardToken;
     this.keyboard = document.querySelector(this.keyboardToken);
+
+    this.textField = this.keyboard.querySelector('.keyboard__display');
+
+    this.specialKeys = [
+      'Shift',
+      'Caps Lock',
+      'Ctrl',
+      'Win',
+      'Alt',
+      'Tab',
+    ];
 
     this.keysException = [
       'CapsLock',
@@ -63,8 +84,15 @@ export default class KeyboardLogicManager {
       'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
       'Y', 'Z'];
 
+    this.lastKeyEvent = null;
+
     /* Bind class context for listeners handlers, what defined as method of this class. */
     this.keyboardEventHandlerBounded = this.keyboardEventHandler.bind(this);
+
+    this.virtualKeyboardEventHandlerBounded = this.virtualKeyboardEventHandler.bind(this);
+
+    /* Make event for change text area */
+    this.textFieldChangeEvent = new Event('change');
   }
 
   searchKeyAndActions(searchingText, callback, number = 0) {
@@ -90,22 +118,42 @@ export default class KeyboardLogicManager {
       pressedKey = pressedKey.snapshotItem(number);
     }
     if (pressedKey) {
-      callback(pressedKey);
+      callback(pressedKey, this.lastKeyEvent);
     } else if (this.verboseLvl > 0) {
-      console.log('!!!! ERROR: cant find virtual key by `event.code!`');
+      /* Console log with error message was here. */
     }
   }
 
   keyboardEventHandler(event) {
     if (this.verboseLvl > 0) {
-      console.log('---- Key event info:', event);
+      /* Console log with event.key info message was here. */
     }
+
+    this.lastKeyEvent = event;
 
     /* Prevent default behaviour for buttons */
     event.preventDefault();
 
-    function changeKeyState(key) {
-      key.classList.add('key-base--pressed');
+    function virtualKeyboardSimulateClickOn(key) {
+      const clickSimulatedEvent = new MouseEvent(
+        'click',
+        {
+          view: window,
+          bubbles: true,
+          cancelable: false,
+        },
+      );
+      key.dispatchEvent(clickSimulatedEvent);
+    }
+
+    function changeKeyState(key, eventLocal) {
+      /* Change visual */
+      if (eventLocal.type === 'keydown') {
+        key.classList.add('key-base--pressed');
+        virtualKeyboardSimulateClickOn(key);
+      } else if (eventLocal.type === 'keyup') {
+        key.classList.remove('key-base--pressed');
+      }
     }
 
     let lastKeyHit = event.key;
@@ -184,9 +232,74 @@ export default class KeyboardLogicManager {
     }
   }
 
+  deleteLastSymbol() {
+    this.textField.value = this.textField.value.split('').slice(0, -1).join('');
+    this.textField.dispatchEvent(this.textFieldChangeEvent);
+  }
+
+  deleteAll() {
+    this.textField.value = '';
+    this.textField.dispatchEvent(this.textFieldChangeEvent);
+  }
+
+  inputSymbol(symbol) {
+    this.textField.value += symbol;
+    this.textField.dispatchEvent(this.textFieldChangeEvent);
+  }
+
+  inputLineBreak() {
+    this.textField.value += '\n';
+    this.textField.dispatchEvent(this.textFieldChangeEvent);
+  }
+
+  inputSpace() {
+    this.textField.value += ' ';
+    this.textField.dispatchEvent(this.textFieldChangeEvent);
+  }
+
+  virtualKeyboardEventHandler(event) {
+    const keyInscription = event.srcElement.innerText;
+
+    if (!this.specialKeys.includes(keyInscription)) {
+      switch (keyInscription) {
+        case 'Backspace': {
+          this.deleteLastSymbol();
+          break;
+        }
+        case 'Del': {
+          this.deleteAll();
+          break;
+        }
+        case 'Space': {
+          this.inputSpace();
+          break;
+        }
+        case 'Enter': {
+          this.inputLineBreak();
+          break;
+        }
+        default: {
+          this.inputSymbol(keyInscription);
+          break;
+        }
+      }
+    }
+  }
+
+  listenVirtualKeyboard() {
+    document.querySelectorAll('.keys__key-base').forEach((element) => {
+      element.addEventListener('click', this.virtualKeyboardEventHandlerBounded);
+    });
+  }
+
   listenPhysicalKeyboard() {
     document.addEventListener(
       'keydown',
+      this.keyboardEventHandlerBounded,
+    );
+
+    document.addEventListener(
+      'keyup',
       this.keyboardEventHandlerBounded,
     );
   }

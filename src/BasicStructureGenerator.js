@@ -135,7 +135,7 @@ export default class BasicStructureGenerator {
     this.header.lastElementChild.appendChild(headingH1);
   }
 
-  generateKeyLayouts(keyLayoutLanguage) {
+  generateKeyLayouts(keyLayoutLanguage, keyNumberLocal) {
     const keyLayoutsCurrentLang = document.createElement('span');
     keyLayoutsCurrentLang.classList.add(`key-base__${keyLayoutLanguage}-keys`);
     const engLayoutArr = [
@@ -190,9 +190,10 @@ export default class BasicStructureGenerator {
         const key = document.createElement('button');
         key.classList.add('keys__key-base');
 
-        this.generateKeyLayouts('en');
+        this.generateKeyLayouts('en', keyNumberTmp);
 
         key.innerHTML = this.inscriptions[this.language][keyNumberTmp].symbolDefault.symbol;
+
         /* Add styles for keys with non-standard sizes. */
         switch ((this.inscriptions[this.language][keyNumberTmp].symbolDefault.symbol)) {
           case 'Backspace': {
@@ -203,7 +204,7 @@ export default class BasicStructureGenerator {
             key.classList.add('key-base--tab');
             break;
           }
-          case '&#92;': {
+          case '\\': {
             key.classList.add('key-base--backslash');
             break;
           }

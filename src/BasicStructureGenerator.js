@@ -25,20 +25,42 @@ import inscriptions from '../assets/js/inscriptions.json';
  * @property  {String} row            - field with information
  *                                      about keyboard row of current key.
  * @property  {Object} symbolDefault  - Object with information about symbol for default state.
- * @property  {Object} symbolMod      - Object with information about symbol
+ * @property  {Object} symbolShiftMod - Object with information about symbol
  *                                      for Shift modification state.
+ * @property  {Object} symbolCapsMod  - Object with information about symbol
+ *                                      for Shift modification state.
+ * @property  {Object} symbolCapsShiftMod - Object with information about symbol
+ *                                          for Shift modification state.
  */
 
 /**
  * @typedef   {Object} symbolDefault  - Object with information about symbol for default state.
- * @property  {String} symbol         - symbol or HTML mnemonic.
+ * @property  {String} symbol         - symbol.
+ * @property  {String} mnemonicHTML   - HTML mnemonic.
  * @property  {String} name           - human-readable name of symbol.
  */
 
 /**
- * @typedef   {Object} symbolMod      - Object with information about symbol
+ * @typedef   {Object} symbolShiftMod - Object with information about symbol
  *                                      for Shift modification state.
- * @property  {String} symbol         - symbol or HTML mnemonic.
+ * @property  {String} symbol         - symbol.
+ * @property  {String} mnemonicHTML   - HTML mnemonic.
+ * @property  {String} name           - human-readable name of symbol.
+ */
+
+/**
+ * @typedef   {Object} symbolCapsMod  - Object with information about symbol
+ *                                      for Shift modification state.
+ * @property  {String} symbol         - symbol.
+ * @property  {String} mnemonicHTML   - HTML mnemonic.
+ * @property  {String} name           - human-readable name of symbol.
+ */
+
+/**
+ * @typedef   {Object} symbolCapsShiftMod  - Object with information about symbol
+ *                                           for Shift modification state.
+ * @property  {String} symbol         - symbol.
+ * @property  {String} mnemonicHTML   - HTML mnemonic.
  * @property  {String} name           - human-readable name of symbol.
  */
 // </editor-fold desc="Keys Object JSDoc">
@@ -135,42 +157,83 @@ export default class BasicStructureGenerator {
     this.header.lastElementChild.appendChild(headingH1);
   }
 
+  getInscriptionForKey(elementForInscription, key, symbolMod) {
+    const elementForInscriptionLocal = elementForInscription;
+    switch (symbolMod) {
+      case 'symbolDefault': {
+        elementForInscriptionLocal.innerHTML = this.inscriptions[this.language][key]
+          .symbolDefault.symbol;
+        break;
+      }
+      case 'symbolShiftMod': {
+        elementForInscriptionLocal.innerHTML = this.inscriptions[this.language][key]
+          .symbolShiftMod.symbol !== 'none'
+          ? this.inscriptions[this.language][key].symbolShiftMod.symbol
+          : this.inscriptions[this.language][key].symbolDefault.symbol;
+        break;
+      }
+      case 'symbolCapsMod': {
+        elementForInscriptionLocal.innerHTML = this.inscriptions[this.language][key]
+          .symbolCapsMod.symbol !== 'none'
+          ? this.inscriptions[this.language][key].symbolCapsMod.symbol
+          : this.inscriptions[this.language][key].symbolDefault.symbol;
+        break;
+      }
+      case 'symbolCapsShiftMod': {
+        elementForInscriptionLocal.innerHTML = this.inscriptions[this.language][key]
+          .symbolCapsShiftMod.symbol !== 'none'
+          ? this.inscriptions[this.language][key].symbolCapsShiftMod.symbol
+          : this.inscriptions[this.language][key].symbolDefault.symbol;
+        break;
+      }
+      default: {
+        break;
+      }
+    }
+  }
+
   generateKeyLayouts(keyLayoutLanguage, keyNumberLocal) {
     const keyLayoutsCurrentLang = document.createElement('span');
     keyLayoutsCurrentLang.classList.add(`key-base__${keyLayoutLanguage}-keys`);
-    const engLayoutArr = [
+
+    const layoutArr = [
       document.createElement('span'),
       document.createElement('span'),
       document.createElement('span'),
       document.createElement('span'),
     ];
-    engLayoutArr.forEach((element, index) => {
-      element.classList.add(`${keyLayoutLanguage}-keys__key-layout`);
+    layoutArr.forEach((element, index) => {
+      const elementLocal = element;
+      elementLocal.classList.add(`${keyLayoutLanguage}-keys__key-layout`);
       switch (index) {
         case 0: {
-          element.classList.add('key-layout--default');
+          elementLocal.classList.add('key-layout--default');
+          this.getInscriptionForKey(elementLocal, keyNumberLocal, 'symbolDefault');
           break;
         }
         case 1: {
-          element.classList.add('key-layout--shift-mod');
-          element.classList.add('key-layout--hidden');
+          elementLocal.classList.add('key-layout--shift-mod');
+          elementLocal.classList.add('key-layout--hidden');
+          this.getInscriptionForKey(elementLocal, keyNumberLocal, 'symbolShiftMod');
           break;
         }
         case 2: {
-          element.classList.add('key-layout--caps-mod');
-          element.classList.add('key-layout--hidden');
+          elementLocal.classList.add('key-layout--caps-mod');
+          elementLocal.classList.add('key-layout--hidden');
+          this.getInscriptionForKey(elementLocal, keyNumberLocal, 'symbolCapsMod');
           break;
         }
         case 3: {
-          element.classList.add('key-layout--caps-and-shift-mod');
-          element.classList.add('key-layout--hidden');
+          elementLocal.classList.add('key-layout--caps-and-shift-mod');
+          elementLocal.classList.add('key-layout--hidden');
+          this.getInscriptionForKey(elementLocal, keyNumberLocal, 'symbolCapsShiftMod');
           break;
         }
         default: {
           break;
         }
       }
-      keyLayoutsCurrentLang.appendChild(element);
+      keyLayoutsCurrentLang.appendChild(elementLocal);
     });
     if (this.verboseLvl > 1) {
       console.log(keyLayoutsCurrentLang);

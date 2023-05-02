@@ -100,7 +100,7 @@ export default class KeyboardLogicManager {
     let pressedKey = null;
     if (number === 0) {
       pressedKey = document.evaluate(
-        `//button[text() = "${searchingText}"]`,
+        `//button[span[span[text() = "${searchingText}"]]]`,
         document,
         null,
         XPathResult.FIRST_ORDERED_NODE_TYPE,
@@ -109,7 +109,7 @@ export default class KeyboardLogicManager {
     }
     if (number === 1) {
       pressedKey = document.evaluate(
-        `//button[text() = "${searchingText}"]`,
+        `//button[span[span[text() = "${searchingText}"]]]`,
         document,
         null,
         XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,

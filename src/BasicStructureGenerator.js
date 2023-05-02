@@ -238,6 +238,7 @@ export default class BasicStructureGenerator {
     if (this.verboseLvl > 1) {
       console.log(keyLayoutsCurrentLang);
     }
+    return keyLayoutsCurrentLang;
   }
 
   /**
@@ -253,9 +254,7 @@ export default class BasicStructureGenerator {
         const key = document.createElement('button');
         key.classList.add('keys__key-base');
 
-        this.generateKeyLayouts('en', keyNumberTmp);
-
-        key.innerHTML = this.inscriptions[this.language][keyNumberTmp].symbolDefault.symbol;
+        key.appendChild(this.generateKeyLayouts('en', keyNumberTmp));
 
         /* Add styles for keys with non-standard sizes. */
         switch ((this.inscriptions[this.language][keyNumberTmp].symbolDefault.symbol)) {

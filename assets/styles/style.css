@@ -90,6 +90,7 @@
 .keys__column-gap {
     /* Grid */
     grid-column: span 1;
+    grid-row: span 6;
 }
 
 .keys__row-gap {
@@ -135,6 +136,16 @@
     border: 2px solid rgb(114, 114, 114);
     transition: 300ms;
 }
+
+.en-keys--hidden,
+.ru-keys--hidden {
+    display: none;
+}
+
+.key-layout--hidden {
+    display: none;
+}
+
 
 .key-base--backspace {
     /* Grid */

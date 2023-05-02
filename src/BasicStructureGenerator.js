@@ -135,6 +135,52 @@ export default class BasicStructureGenerator {
     this.header.lastElementChild.appendChild(headingH1);
   }
 
+  generateKeyLayouts(keyLayoutLanguage) {
+    const keyLayoutsCurrentLang = document.createElement('span');
+    keyLayoutsCurrentLang.classList.add(`key-base__${keyLayoutLanguage}-keys`);
+    const engLayoutArr = [
+      document.createElement('span'),
+      document.createElement('span'),
+      document.createElement('span'),
+      document.createElement('span'),
+    ];
+    engLayoutArr.forEach((element, index) => {
+      element.classList.add(`${keyLayoutLanguage}-keys__key-layout`);
+      switch (index) {
+        case 0: {
+          element.classList.add('key-layout--default');
+          break;
+        }
+        case 1: {
+          element.classList.add('key-layout--shift-mod');
+          element.classList.add('key-layout--hidden');
+          break;
+        }
+        case 2: {
+          element.classList.add('key-layout--caps-mod');
+          element.classList.add('key-layout--hidden');
+          break;
+        }
+        case 3: {
+          element.classList.add('key-layout--caps-and-shift-mod');
+          element.classList.add('key-layout--hidden');
+          break;
+        }
+        default: {
+          break;
+        }
+      }
+      keyLayoutsCurrentLang.appendChild(element);
+    });
+    if (this.verboseLvl > 1) {
+      console.log(keyLayoutsCurrentLang);
+    }
+  }
+
+  /**
+   * Generate keys for keyboard with layouts for mods
+   * and keyboard different language layouts.
+   */
   generateKeys() {
     /* Generate keys, column-gaps and row-gaps, as grid elements. */
     for (let keyIndex = 1; keyIndex <= this.keysCount + (this.keysCount - 0); keyIndex += 1) {
@@ -143,6 +189,9 @@ export default class BasicStructureGenerator {
         /* Add key base. */
         const key = document.createElement('button');
         key.classList.add('keys__key-base');
+
+        this.generateKeyLayouts('en');
+
         key.innerHTML = this.inscriptions[this.language][keyNumberTmp].symbolDefault.symbol;
         /* Add styles for keys with non-standard sizes. */
         switch ((this.inscriptions[this.language][keyNumberTmp].symbolDefault.symbol)) {

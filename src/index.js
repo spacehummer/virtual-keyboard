@@ -16,7 +16,7 @@ import '../assets/styles/style.css';
 import '../assets/styles/normalize.css';
 
 /* Debug control. */
-const debugHardcode = 1;
+const debugHardcode = 2;
 /**
  * TODO: get debug flag from somewhere.
  */

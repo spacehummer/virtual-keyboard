@@ -1,6 +1,7 @@
 {
   "en": {
     "1": {
+      "eventCode": "Backquote",
       "row": "1",
       "symbolDefault": {
         "symbol": "&#96;",
@@ -12,6 +13,7 @@
       }
     },
     "2": {
+      "eventCode": "Digit1",
       "row": "1",
       "symbolDefault": {
         "symbol": "1",
@@ -23,6 +25,7 @@
       }
     },
     "3": {
+      "eventCode": "Digit2",
       "row": "1",
       "symbolDefault": {
         "symbol": "2",
@@ -34,6 +37,7 @@
       }
     },
     "4": {
+      "eventCode": "Digit3",
       "row": "1",
       "symbolDefault": {
         "symbol": "3",
@@ -45,6 +49,7 @@
       }
     },
     "5": {
+      "eventCode": "Digit4",
       "row": "1",
       "symbolDefault": {
         "symbol": "4",
@@ -56,6 +61,7 @@
       }
     },
     "6": {
+      "eventCode": "Digit5",
       "row": "1",
       "symbolDefault": {
         "symbol": "5",
@@ -67,6 +73,7 @@
       }
     },
     "7": {
+      "eventCode": "Digit6",
       "row": "1",
       "symbolDefault": {
         "symbol": "6",
@@ -78,6 +85,7 @@
       }
     },
     "8": {
+      "eventCode": "Digit7",
       "row": "1",
       "symbolDefault": {
         "symbol": "7",
@@ -89,6 +97,7 @@
       }
     },
     "9": {
+      "eventCode": "Digit8",
       "row": "1",
       "symbolDefault": {
         "symbol": "8",
@@ -100,6 +109,7 @@
       }
     },
     "10": {
+      "eventCode": "Digit9",
       "row": "1",
       "symbolDefault": {
         "symbol": "9",
@@ -111,6 +121,7 @@
       }
     },
     "11": {
+      "eventCode": "Digit0",
       "row": "1",
       "symbolDefault": {
         "symbol": "0",
@@ -122,6 +133,7 @@
       }
     },
     "12": {
+      "eventCode": "Minus",
       "row": "1",
       "symbolDefault": {
         "symbol": "-",
@@ -133,6 +145,7 @@
       }
     },
     "13": {
+      "eventCode": "Equal",
       "row": "1",
       "symbolDefault": {
         "symbol": "=",
@@ -144,6 +157,7 @@
       }
     },
     "14": {
+      "eventCode": "Backspace",
       "row": "1",
       "symbolDefault": {
         "symbol": "Backspace",
@@ -155,6 +169,7 @@
       }
     },
     "15": {
+      "eventCode": "Tab",
       "row": "2",
       "symbolDefault": {
         "symbol": "Tab",
@@ -166,6 +181,7 @@
       }
     },
     "16": {
+      "eventCode": "KeyQ",
       "row": "2",
       "symbolDefault": {
         "symbol": "q",
@@ -177,6 +193,7 @@
       }
     },
     "17": {
+      "eventCode": "KeyW",
       "row": "2",
       "symbolDefault": {
         "symbol": "w",
@@ -188,6 +205,7 @@
       }
     },
     "18": {
+      "eventCode": "KeyE",
       "row": "2",
       "symbolDefault": {
         "symbol": "e",
@@ -199,6 +217,7 @@
       }
     },
     "19": {
+      "eventCode": "KeyR",
       "row": "2",
       "symbolDefault": {
         "symbol": "r",
@@ -210,6 +229,7 @@
       }
     },
     "20": {
+      "eventCode": "KeyT",
       "row": "2",
       "symbolDefault": {
         "symbol": "t",
@@ -221,6 +241,7 @@
       }
     },
     "21": {
+      "eventCode": "KeyY",
       "row": "2",
       "symbolDefault": {
         "symbol": "y",
@@ -232,6 +253,7 @@
       }
     },
     "22": {
+      "eventCode": "KeyU",
       "row": "2",
       "symbolDefault": {
         "symbol": "u",
@@ -243,6 +265,7 @@
       }
     },
     "23": {
+      "eventCode": "KeyI",
       "row": "2",
       "symbolDefault": {
         "symbol": "i",
@@ -254,6 +277,7 @@
       }
     },
     "24": {
+      "eventCode": "KeyO",
       "row": "2",
       "symbolDefault": {
         "symbol": "o",
@@ -265,6 +289,7 @@
       }
     },
     "25": {
+      "eventCode": "KeyP",
       "row": "2",
       "symbolDefault": {
         "symbol": "p",
@@ -276,6 +301,7 @@
       }
     },
     "26": {
+      "eventCode": "BracketLeft",
       "row": "2",
       "symbolDefault": {
         "symbol": "&#91;",
@@ -287,6 +313,7 @@
       }
     },
     "27": {
+      "eventCode": "BracketRight",
       "row": "2",
       "symbolDefault": {
         "symbol": "&#93;",
@@ -298,6 +325,7 @@
       }
     },
     "28": {
+      "eventCode": "Backslash",
       "row": "2",
       "symbolDefault": {
         "symbol": "&#92;",
@@ -309,6 +337,7 @@
       }
     },
     "29": {
+      "eventCode": "CapsLock",
       "row": "3",
       "symbolDefault": {
         "symbol": "Caps Lock",
@@ -320,6 +349,7 @@
       }
     },
     "30": {
+      "eventCode": "KeyA",
       "row": "3",
       "symbolDefault": {
         "symbol": "a",
@@ -331,6 +361,7 @@
       }
     },
     "31": {
+      "eventCode": "KeyS",
       "row": "3",
       "symbolDefault": {
         "symbol": "s",
@@ -342,6 +373,7 @@
       }
     },
     "32": {
+      "eventCode": "KeyD",
       "row": "3",
       "symbolDefault": {
         "symbol": "d",
@@ -353,6 +385,7 @@
       }
     },
     "33": {
+      "eventCode": "KeyF",
       "row": "3",
       "symbolDefault": {
         "symbol": "f",
@@ -364,6 +397,7 @@
       }
     },
     "34": {
+      "eventCode": "KeyG",
       "row": "3",
       "symbolDefault": {
         "symbol": "g",
@@ -375,6 +409,7 @@
       }
     },
     "35": {
+      "eventCode": "KeyH",
       "row": "3",
       "symbolDefault": {
         "symbol": "h",
@@ -386,6 +421,7 @@
       }
     },
     "36": {
+      "eventCode": "KeyJ",
       "row": "3",
       "symbolDefault": {
         "symbol": "j",
@@ -397,6 +433,7 @@
       }
     },
     "37": {
+      "eventCode": "KeyK",
       "row": "3",
       "symbolDefault": {
         "symbol": "k",
@@ -408,6 +445,7 @@
       }
     },
     "38": {
+      "eventCode": "KeyL",
       "row": "3",
       "symbolDefault": {
         "symbol": "l",
@@ -419,6 +457,7 @@
       }
     },
     "39": {
+      "eventCode": "Semicolon",
       "row": "3",
       "symbolDefault": {
         "symbol": ";",
@@ -430,6 +469,7 @@
       }
     },
     "40": {
+      "eventCode": "Quote",
       "row": "3",
       "symbolDefault": {
         "symbol": "&#39;",
@@ -441,6 +481,7 @@
       }
     },
     "41": {
+      "eventCode": "Enter",
       "row": "3",
       "symbolDefault": {
         "symbol": "Enter",
@@ -452,6 +493,7 @@
       }
     },
     "42": {
+      "eventCode": "ShiftLeft",
       "row": "4",
       "symbolDefault": {
         "symbol": "Shift",
@@ -463,6 +505,7 @@
       }
     },
     "43": {
+      "eventCode": "KeyZ",
       "row": "4",
       "symbolDefault": {
         "symbol": "z",
@@ -474,6 +517,7 @@
       }
     },
     "44": {
+      "eventCode": "KeyX",
       "row": "4",
       "symbolDefault": {
         "symbol": "x",
@@ -485,6 +529,7 @@
       }
     },
     "45": {
+      "eventCode": "KeyC",
       "row": "4",
       "symbolDefault": {
         "symbol": "c",
@@ -496,6 +541,7 @@
       }
     },
     "46": {
+      "eventCode": "KeyV",
       "row": "4",
       "symbolDefault": {
         "symbol": "v",
@@ -507,6 +553,7 @@
       }
     },
     "47": {
+      "eventCode": "KeyB",
       "row": "4",
       "symbolDefault": {
         "symbol": "b",
@@ -518,6 +565,7 @@
       }
     },
     "48": {
+      "eventCode": "KeyN",
       "row": "4",
       "symbolDefault": {
         "symbol": "n",
@@ -529,6 +577,7 @@
       }
     },
     "49": {
+      "eventCode": "KeyM",
       "row": "4",
       "symbolDefault": {
         "symbol": "m",
@@ -540,6 +589,7 @@
       }
     },
     "50": {
+      "eventCode": "Comma",
       "row": "4",
       "symbolDefault": {
         "symbol": ",",
@@ -551,6 +601,7 @@
       }
     },
     "51": {
+      "eventCode": "Period",
       "row": "4",
       "symbolDefault": {
         "symbol": ".",
@@ -562,6 +613,7 @@
       }
     },
     "52": {
+      "eventCode": "Slash",
       "row": "4",
       "symbolDefault": {
         "symbol": "&#47;",
@@ -573,6 +625,7 @@
       }
     },
     "53": {
+      "eventCode": "ShiftRight",
       "row": "4",
       "symbolDefault": {
         "symbol": "Shift",
@@ -584,6 +637,7 @@
       }
     },
     "54": {
+      "eventCode": "ArrowUp",
       "row": "4",
       "symbolDefault": {
         "symbol": "&#9650;",
@@ -595,6 +649,7 @@
       }
     },
     "55": {
+      "eventCode": "Delete",
       "row": "2",
       "symbolDefault": {
         "symbol": "Del",
@@ -606,6 +661,7 @@
       }
     },
     "56": {
+      "eventCode": "ControlLeft",
       "row": "5",
       "symbolDefault": {
         "symbol": "Ctrl",
@@ -617,6 +673,7 @@
       }
     },
     "57": {
+      "eventCode": "Metaleft",
       "row": "5",
       "symbolDefault": {
         "symbol": "Win",
@@ -628,6 +685,7 @@
       }
     },
     "58": {
+      "eventCode": "AltLeft",
       "row": "5",
       "symbolDefault": {
         "symbol": "Alt",
@@ -639,6 +697,7 @@
       }
     },
     "59": {
+      "eventCode": "Space",
       "row": "5",
       "symbolDefault": {
         "symbol": "Space",
@@ -650,6 +709,7 @@
       }
     },
     "60": {
+      "eventCode": "AltRight",
       "row": "5",
       "symbolDefault": {
         "symbol": "Alt",
@@ -661,6 +721,7 @@
       }
     },
     "61": {
+      "eventCode": "ControlRight",
       "row": "5",
       "symbolDefault": {
         "symbol": "Ctrl",
@@ -672,6 +733,7 @@
       }
     },
     "62": {
+      "eventCode": "ArrowLeft",
       "row": "5",
       "symbolDefault": {
         "symbol": "&#9668;",
@@ -683,6 +745,7 @@
       }
     },
     "63": {
+      "eventCode": "ArrowDown",
       "row": "5",
       "symbolDefault": {
         "symbol": "&#9660;",
@@ -694,6 +757,7 @@
       }
     },
     "64": {
+      "eventCode": "ArrowRight",
       "row": "5",
       "symbolDefault": {
         "symbol": "&#9658;",

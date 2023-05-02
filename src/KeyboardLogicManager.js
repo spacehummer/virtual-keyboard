@@ -127,6 +127,7 @@ export default class KeyboardLogicManager {
   keyboardEventHandler(event) {
     if (this.verboseLvl > 0) {
       /* Console log with event.key info message was here. */
+      console.log('---- Key event:', event);
     }
 
     this.lastKeyEvent = event;

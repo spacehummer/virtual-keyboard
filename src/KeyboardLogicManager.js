@@ -37,6 +37,10 @@ export default class KeyboardLogicManager {
 
   textFieldChangeEvent;
 
+  capsState;
+
+  shiftState;
+
   /**
    * Keyboard logic class constructor.
    * @param pageRootToken {String}  - token for App page root element.
@@ -93,6 +97,9 @@ export default class KeyboardLogicManager {
 
     /* Make event for change text area */
     this.textFieldChangeEvent = new Event('change');
+
+    this.capsState = false;
+    this.shiftState = false;
   }
 
   searchKeyAndActions(searchingText, callback, number = 0) {
@@ -285,6 +292,15 @@ export default class KeyboardLogicManager {
         }
       }
     }
+  }
+
+  /* TODO: We need use event.code instead event.key!
+   * */
+
+  observeShiftState() {
+    /* TODO: implement class!
+     *  Observe Shift state by observe shift key class changing in DOM
+     * */
   }
 
   listenVirtualKeyboard() {

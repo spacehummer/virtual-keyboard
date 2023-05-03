@@ -22,6 +22,7 @@ import inscriptions from '../assets/js/inscriptions.json';
 
 /**
  * @typedef   {Object} keyByNumber    - inner Object with information about separate key.
+ * @property  {String} eventCode      - key event.code.
  * @property  {String} row            - field with information
  *                                      about keyboard row of current key.
  * @property  {Object} symbolDefault  - Object with information about symbol for default state.
@@ -253,6 +254,10 @@ export default class BasicStructureGenerator {
         /* Add key base. */
         const key = document.createElement('button');
         key.classList.add('keys__key-base');
+        key.setAttribute(
+          'data-event-code',
+          this.inscriptions[this.language][keyNumberTmp].eventCode,
+        );
 
         key.appendChild(this.generateKeyLayouts('en', keyNumberTmp));
 

@@ -78,7 +78,6 @@ export default class KeyboardLogicManager {
       'Ctrl',
       'Win',
       'Alt',
-      'Tab',
     ];
 
     this.keysException = [
@@ -232,6 +231,11 @@ export default class KeyboardLogicManager {
     this.textField.dispatchEvent(this.textFieldChangeEvent);
   }
 
+  inputTab() {
+    this.textField.value += '\u0009';
+    this.textField.dispatchEvent(this.textFieldChangeEvent);
+  }
+
   virtualKeyboardEventHandler(event) {
     const keyInscription = event.srcElement.innerText;
 
@@ -251,6 +255,10 @@ export default class KeyboardLogicManager {
         }
         case 'Enter': {
           this.inputLineBreak();
+          break;
+        }
+        case 'Tab': {
+          this.inputTab();
           break;
         }
         default: {

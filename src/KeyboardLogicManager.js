@@ -91,7 +91,7 @@ export default class KeyboardLogicManager {
     this.lastKeyEvent = null;
 
     /* Bind class context for listeners handlers, what defined as method of this class. */
-    this.keyboardEventHandlerBounded = this.keyboardEventHandlerV2.bind(this);
+    this.keyboardEventHandlerBounded = this.keyboardEventHandler.bind(this);
 
     this.virtualKeyboardEventHandlerBounded = this.virtualKeyboardEventHandler.bind(this);
 
@@ -100,41 +100,6 @@ export default class KeyboardLogicManager {
 
     this.capsState = false;
     this.shiftState = false;
-  }
-
-  /**
-   * Search keys by inner text. Deprecated!
-   * @param searchingText
-   * @param callback
-   * @param number
-   */
-  searchKeyByInnerTextAndActions(searchingText, callback, number = 0) {
-    /* Find hitted key by XPath. */
-    let pressedKey = null;
-    if (number === 0) {
-      pressedKey = document.evaluate(
-        `//button[span[span[text() = "${searchingText}"]]]`,
-        document,
-        null,
-        XPathResult.FIRST_ORDERED_NODE_TYPE,
-        null,
-      ).singleNodeValue;
-    }
-    if (number === 1) {
-      pressedKey = document.evaluate(
-        `//button[span[span[text() = "${searchingText}"]]]`,
-        document,
-        null,
-        XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
-        null,
-      );
-      pressedKey = pressedKey.snapshotItem(number);
-    }
-    if (pressedKey) {
-      callback(pressedKey, this.lastKeyEvent);
-    } else if (this.verboseLvl > 0) {
-      /* Console log with error message was here. */
-    }
   }
 
   searchKeyByDataAtrAndActions(dataEventCode, callback, number = 0) {
@@ -154,116 +119,7 @@ export default class KeyboardLogicManager {
     }
   }
 
-  keyboardEventHandlerV1(event) {
-    if (this.verboseLvl > 0) {
-      /* Console log with event.key info message was here. */
-      console.log('---- Key event:', event);
-    }
-
-    this.lastKeyEvent = event;
-
-    /* Prevent default behaviour for buttons */
-    event.preventDefault();
-
-    function virtualKeyboardSimulateClickOn(key) {
-      const clickSimulatedEvent = new MouseEvent(
-        'click',
-        {
-          view: window,
-          bubbles: true,
-          cancelable: false,
-        },
-      );
-      key.dispatchEvent(clickSimulatedEvent);
-    }
-
-    function changeKeyState(key, eventLocal) {
-      /* Change visual */
-      if (eventLocal.type === 'keydown') {
-        key.classList.add('key-base--pressed');
-        virtualKeyboardSimulateClickOn(key);
-      } else if (eventLocal.type === 'keyup') {
-        key.classList.remove('key-base--pressed');
-      }
-    }
-
-    let lastKeyHit = event.key;
-    if (!this.keysException.includes(lastKeyHit)) {
-      if (this.keysAlphabeticUpperCase.includes(lastKeyHit)) {
-        lastKeyHit = lastKeyHit.toLowerCase();
-      }
-      this.searchKeyByInnerTextAndActions(lastKeyHit, changeKeyState);
-    } else if (this.keysException.includes(lastKeyHit)) {
-      switch (event.key) {
-        case 'CapsLock': {
-          this.searchKeyByInnerTextAndActions('Caps Lock', changeKeyState);
-          break;
-        }
-        case '\'': {
-          this.searchKeyByInnerTextAndActions('\'', changeKeyState);
-          break;
-        }
-        case 'Shift': {
-          if (event.code === 'ShiftLeft') {
-            this.searchKeyByInnerTextAndActions('Shift', changeKeyState);
-          } else {
-            this.searchKeyByInnerTextAndActions('Shift', changeKeyState, 1);
-          }
-          break;
-        }
-        case 'Delete': {
-          this.searchKeyByInnerTextAndActions('Del', changeKeyState);
-          break;
-        }
-        case 'Control': {
-          if (event.code === 'ControlLeft') {
-            this.searchKeyByInnerTextAndActions('Ctrl', changeKeyState);
-          } else {
-            this.searchKeyByInnerTextAndActions('Ctrl', changeKeyState, 1);
-          }
-          break;
-        }
-        case 'Meta': {
-          this.searchKeyByInnerTextAndActions('Win', changeKeyState);
-          break;
-        }
-        case 'Alt': {
-          if (event.code === 'AltLeft') {
-            this.searchKeyByInnerTextAndActions('Alt', changeKeyState);
-          } else {
-            this.searchKeyByInnerTextAndActions('Alt', changeKeyState, 1);
-          }
-          break;
-        }
-        case ' ': {
-          this.searchKeyByInnerTextAndActions('Space', changeKeyState);
-          break;
-        }
-        case 'ArrowUp': {
-          this.searchKeyByInnerTextAndActions('▲', changeKeyState);
-          break;
-        }
-        case 'ArrowDown': {
-          this.searchKeyByInnerTextAndActions('▼', changeKeyState);
-          break;
-        }
-        case 'ArrowLeft': {
-          this.searchKeyByInnerTextAndActions('◄', changeKeyState);
-          break;
-        }
-        case 'ArrowRight': {
-          this.searchKeyByInnerTextAndActions('►', changeKeyState);
-          break;
-        }
-
-        default: {
-          break;
-        }
-      }
-    }
-  }
-
-  keyboardEventHandlerV2(event) {
+  keyboardEventHandler(event) {
     if (this.verboseLvl > 0) {
       /* Console log with event.key info message was here. */
       console.log('---- Key event:', event);

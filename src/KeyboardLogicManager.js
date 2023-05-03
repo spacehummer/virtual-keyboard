@@ -224,6 +224,8 @@ export default class KeyboardLogicManager {
       this.textField.selectionStart = startPos - 1;
       this.textField.selectionEnd = startPos - 1;
     }
+    this.textField.focus();
+    this.textField.blur();
   }
 
   deleteSymbolAfterCaret() {
@@ -235,6 +237,8 @@ export default class KeyboardLogicManager {
       this.textField.selectionStart = startPos;
       this.textField.selectionEnd = startPos;
     }
+    this.textField.focus();
+    this.textField.blur();
   }
 
   deleteAll() {

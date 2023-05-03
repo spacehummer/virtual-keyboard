@@ -169,14 +169,12 @@ export default class KeyboardLogicManager {
     }
 
     function disableKeyState(key, eventLocal) {
-      console.log(key);
       /* Change visual */
       if (eventLocal.type === 'keydown') {
-        console.log(key);
         key.classList.add('key-base--unpressed-lock');
         virtualKeyboardSimulateClickOn(key);
       } else if (eventLocal.type === 'keyup') {
-        key.classList.add('key-base--unpressed-lock');
+        key.classList.remove('key-base--unpressed-lock');
       }
     }
 

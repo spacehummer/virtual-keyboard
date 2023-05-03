@@ -75,8 +75,6 @@ export default class KeyboardLogicManager {
     this.textField = this.keyboard.querySelector('.keyboard__display');
 
     this.specialKeys = [
-      'Shift',
-      'Caps Lock',
       'Ctrl',
       'Win',
       'Alt',
@@ -297,6 +295,22 @@ export default class KeyboardLogicManager {
         }
         case 'Tab': {
           this.inputTab();
+          break;
+        }
+        case 'Caps Lock': {
+          this.keyCaps.classList.add('key-base--pressed');
+          setTimeout(() => {
+            this.keyCaps.classList.remove('key-base--pressed');
+          }, 100);
+          break;
+        }
+        case 'Shift': {
+          if (!this.lastKeyEvent || (this.lastKeyEvent.key !== 'Shift')) {
+            this.keyShift.classList.add('key-base--pressed');
+            setTimeout(() => {
+              this.keyShift.classList.remove('key-base--pressed');
+            }, 100);
+          }
           break;
         }
         default: {

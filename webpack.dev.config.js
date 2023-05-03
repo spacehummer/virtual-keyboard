@@ -19,8 +19,6 @@ module.exports = (env) => {
   // noinspection JSUnresolvedVariable
   const noCssInJs = env.no_css_in_js === 'true';
   console.log({ noCssInJs });
-  // console.log('env.no_css_in_js = : ', no_css_in_js);
-  // console.log({ env });
 
   const styleLoaderOrMiniCssExtractPluginLoader = noCssInJs
     ? MiniCssExtractPlugin.loader

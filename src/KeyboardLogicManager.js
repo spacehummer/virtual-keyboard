@@ -16,6 +16,8 @@ export default class KeyboardLogicManager {
   keyboard;
 
   textField;
+
+  keys;
   // </editor-fold desc="Elements">
 
   // <editor-fold desc="Event Handlers Bounded to class context">
@@ -110,6 +112,8 @@ export default class KeyboardLogicManager {
 
     /* Make event for change text area */
     this.textFieldChangeEvent = new Event('change');
+
+    this.keys = [...document.querySelectorAll('.keys__key-base')];
 
     this.keyControlLeft = document.querySelector('[data-event-code="ControlLeft"]');
     this.keyShift = document.querySelector('[data-event-code="ShiftLeft"]');
@@ -373,23 +377,30 @@ export default class KeyboardLogicManager {
   }
 
   changeLanguageLayout() {
-    const keys = [...document.querySelectorAll('.keys__key-base')];
     if (this.languageAlternateState === false) {
-      keys.forEach((key) => {
+      this.keys.forEach((key) => {
         key.querySelector('.key-base__en-keys').classList
           .add('en-keys--hidden');
         key.querySelector('.key-base__ru-keys').classList
           .remove('ru-keys--hidden');
       });
       this.languageAlternateState = true;
+      localStorage.setItem('spacehummerVirtualKeyboardLanguageAlternateState', 'true');
     } else {
-      keys.forEach((key) => {
+      this.keys.forEach((key) => {
         key.querySelector('.key-base__en-keys').classList
           .remove('en-keys--hidden');
         key.querySelector('.key-base__ru-keys').classList
           .add('ru-keys--hidden');
       });
       this.languageAlternateState = false;
+      localStorage.setItem('spacehummerVirtualKeyboardLanguageAlternateState', 'false');
+    }
+  }
+
+  setLanguageLayoutAfterLoading() {
+    if (localStorage.getItem('spacehummerVirtualKeyboardLanguageAlternateState') === 'true') {
+      this.changeLanguageLayout();
     }
   }
 

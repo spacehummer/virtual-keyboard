@@ -257,7 +257,7 @@ export default class BasicStructureGenerator {
       keyLayoutsCurrentLang.appendChild(elementLocal);
     });
     if (this.verboseLvl > 1) {
-      console.log(keyLayoutsCurrentLang);
+      /* Console log with keyLayoutsCurrentLang was here */
     }
     return keyLayoutsCurrentLang;
   }

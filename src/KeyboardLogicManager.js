@@ -143,8 +143,7 @@ export default class KeyboardLogicManager {
 
   keyboardEventHandler(event) {
     if (this.verboseLvl > 0) {
-      /* Console log with event.key info message was here. */
-      console.log('---- Key event:', event);
+      /* Console log with '---- Key event:' and event info message was here. */
     }
 
     const eventCodeExceptions = [
@@ -374,14 +373,14 @@ export default class KeyboardLogicManager {
           this.capsState = true;
           this.changeModLayout();
           if (this.verboseLvl > 1) {
-            console.log('---- Caps mod on!');
+            /* Console log with '---- Caps mod on!' was here. */
           }
           this.keyCaps.classList.add('key-base--hold');
         } else if (this.capsState === true) {
           this.capsState = false;
           this.changeModLayout();
           if (this.verboseLvl > 1) {
-            console.log('---- Caps mod off!');
+            /* Console log with '---- Caps mod off!' was here. */
           }
           this.keyCaps.classList.remove('key-base--hold');
         }
@@ -392,14 +391,14 @@ export default class KeyboardLogicManager {
           this.shiftState = true;
           this.changeModLayout();
           if (this.verboseLvl > 1) {
-            console.log('---- Shift mod on!');
+            /* Console log with '---- Shift mod on!' was here. */
           }
           this.keyShift.classList.add('key-base--hold');
         } else if (this.shiftState === true) {
           this.shiftState = false;
           this.changeModLayout();
           if (this.verboseLvl > 1) {
-            console.log('---- Shift mod off!');
+            /* Console log with '---- Shift mod off!' was here. */
           }
           this.keyShift.classList.remove('key-base--hold');
         }

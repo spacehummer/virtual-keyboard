@@ -1161,7 +1161,7 @@
       }
     },
     "57": {
-      "eventCode": "Metaleft",
+      "eventCode": "MetaLeft",
       "row": "5",
       "symbolDefault": {
         "symbol": "Win",

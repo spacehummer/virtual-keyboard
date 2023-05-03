@@ -47,6 +47,7 @@ function windowOnLoadWork() {
     debug,
   );
 
+  keyboardManager.setLanguageLayoutAfterLoading();
   keyboardManager.listenPhysicalKeyboard();
   keyboardManager.listenVirtualKeyboard();
   keyboardManager.observeControlLeftState();

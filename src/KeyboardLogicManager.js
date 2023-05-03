@@ -16,6 +16,8 @@ export default class KeyboardLogicManager {
   keyboard;
 
   textField;
+
+  keys;
   // </editor-fold desc="Elements">
 
   // <editor-fold desc="Event Handlers Bounded to class context">
@@ -78,7 +80,6 @@ export default class KeyboardLogicManager {
       'Ctrl',
       'Win',
       'Alt',
-      'Tab',
     ];
 
     this.keysException = [
@@ -111,6 +112,8 @@ export default class KeyboardLogicManager {
 
     /* Make event for change text area */
     this.textFieldChangeEvent = new Event('change');
+
+    this.keys = [...document.querySelectorAll('.keys__key-base')];
 
     this.keyControlLeft = document.querySelector('[data-event-code="ControlLeft"]');
     this.keyShift = document.querySelector('[data-event-code="ShiftLeft"]');
@@ -212,24 +215,63 @@ export default class KeyboardLogicManager {
     this.textField.dispatchEvent(this.textFieldChangeEvent);
   }
 
+  deleteSymbolBeforeCaret() {
+    if (this.textField.selectionStart || this.textField.selectionStart === '0') {
+      const startPos = this.textField.selectionStart;
+      const endPos = this.textField.selectionEnd;
+      this.textField.value = this.textField.value.substring(0, startPos - 1)
+        + this.textField.value.substring(endPos, this.textField.value.length);
+      this.textField.selectionStart = startPos - 1;
+      this.textField.selectionEnd = startPos - 1;
+    }
+    this.textField.focus();
+    this.textField.blur();
+  }
+
+  deleteSymbolAfterCaret() {
+    if (this.textField.selectionStart || this.textField.selectionStart === '0') {
+      const startPos = this.textField.selectionStart;
+      const endPos = this.textField.selectionEnd;
+      this.textField.value = this.textField.value.substring(0, startPos)
+        + this.textField.value.substring(endPos + 1, this.textField.value.length);
+      this.textField.selectionStart = startPos;
+      this.textField.selectionEnd = startPos;
+    }
+    this.textField.focus();
+    this.textField.blur();
+  }
+
   deleteAll() {
     this.textField.value = '';
     this.textField.dispatchEvent(this.textFieldChangeEvent);
   }
 
   inputSymbol(symbol) {
-    this.textField.value += symbol;
+    if (this.textField.selectionStart || this.textField.selectionStart === '0') {
+      const startPos = this.textField.selectionStart;
+      const endPos = this.textField.selectionEnd;
+      this.textField.value = this.textField.value.substring(0, startPos)
+        + symbol
+        + this.textField.value.substring(endPos, this.textField.value.length);
+      this.textField.selectionStart = startPos + symbol.length;
+      this.textField.selectionEnd = startPos + symbol.length;
+    } else {
+      this.textField.value += symbol;
+    }
+
     this.textField.dispatchEvent(this.textFieldChangeEvent);
   }
 
   inputLineBreak() {
-    this.textField.value += '\n';
-    this.textField.dispatchEvent(this.textFieldChangeEvent);
+    this.inputSymbol('\n');
   }
 
   inputSpace() {
-    this.textField.value += ' ';
-    this.textField.dispatchEvent(this.textFieldChangeEvent);
+    this.inputSymbol(' ');
+  }
+
+  inputTab() {
+    this.inputSymbol('\u0009');
   }
 
   virtualKeyboardEventHandler(event) {
@@ -238,11 +280,11 @@ export default class KeyboardLogicManager {
     if (!this.specialKeys.includes(keyInscription)) {
       switch (keyInscription) {
         case 'Backspace': {
-          this.deleteLastSymbol();
+          this.deleteSymbolBeforeCaret();
           break;
         }
         case 'Del': {
-          this.deleteAll();
+          this.deleteSymbolAfterCaret();
           break;
         }
         case 'Space': {
@@ -251,6 +293,10 @@ export default class KeyboardLogicManager {
         }
         case 'Enter': {
           this.inputLineBreak();
+          break;
+        }
+        case 'Tab': {
+          this.inputTab();
           break;
         }
         default: {
@@ -346,23 +392,30 @@ export default class KeyboardLogicManager {
   }
 
   changeLanguageLayout() {
-    const keys = [...document.querySelectorAll('.keys__key-base')];
     if (this.languageAlternateState === false) {
-      keys.forEach((key) => {
+      this.keys.forEach((key) => {
         key.querySelector('.key-base__en-keys').classList
           .add('en-keys--hidden');
         key.querySelector('.key-base__ru-keys').classList
           .remove('ru-keys--hidden');
       });
       this.languageAlternateState = true;
+      localStorage.setItem('spacehummerVirtualKeyboardLanguageAlternateState', 'true');
     } else {
-      keys.forEach((key) => {
+      this.keys.forEach((key) => {
         key.querySelector('.key-base__en-keys').classList
           .remove('en-keys--hidden');
         key.querySelector('.key-base__ru-keys').classList
           .add('ru-keys--hidden');
       });
       this.languageAlternateState = false;
+      localStorage.setItem('spacehummerVirtualKeyboardLanguageAlternateState', 'false');
+    }
+  }
+
+  setLanguageLayoutAfterLoading() {
+    if (localStorage.getItem('spacehummerVirtualKeyboardLanguageAlternateState') === 'true') {
+      this.changeLanguageLayout();
     }
   }
 

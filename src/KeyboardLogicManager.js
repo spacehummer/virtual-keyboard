@@ -271,6 +271,17 @@ export default class KeyboardLogicManager {
         key.querySelector('.key-layout--caps-and-shift-mod').classList
           .add('key-layout--hidden');
       });
+    } else if ((this.capsState === true) && (this.shiftState === true)) {
+      keys.forEach((key) => {
+        key.querySelector('.key-layout--default').classList
+          .add('key-layout--hidden');
+        key.querySelector('.key-layout--shift-mod').classList
+          .add('key-layout--hidden');
+        key.querySelector('.key-layout--caps-mod').classList
+          .add('key-layout--hidden');
+        key.querySelector('.key-layout--caps-and-shift-mod').classList
+          .remove('key-layout--hidden');
+      });
     }
   }
 
@@ -301,14 +312,14 @@ export default class KeyboardLogicManager {
           if (this.verboseLvl > 1) {
             console.log('---- Caps mod on!');
           }
-          this.keyCaps.classList.add('key-base--hold');
+          this.keyShift.classList.add('key-base--hold');
         } else if (this.shiftState === true) {
           this.shiftState = false;
           this.changeModLayout();
           if (this.verboseLvl > 1) {
             console.log('---- Caps mod on!');
           }
-          this.keyCaps.classList.remove('key-base--hold');
+          this.keyShift.classList.remove('key-base--hold');
         }
         break;
       }
@@ -319,22 +330,13 @@ export default class KeyboardLogicManager {
   }
 
   observeShiftState() {
-    /* TODO: implement class?
-     *  Observe Shift state by observe shift key class changing in DOM
-     * */
-    const verboseLvlLocal = this.verboseLvl;
+    const onShiftModWork = () => {
+      this.modStateManager('shift');
+    };
 
-    function onShiftModWork() {
-      if (verboseLvlLocal > 1) {
-        console.log('---- Shift mod on!');
-      }
-    }
-
-    function onUnShiftModWork() {
-      if (verboseLvlLocal > 1) {
-        console.log('---- Shift mod off!');
-      }
-    }
+    const onUnShiftModWork = () => {
+      this.modStateManager('shift');
+    };
 
     const shiftObserver = new ElementClassObserver(
       this.keyShift,
@@ -355,15 +357,15 @@ export default class KeyboardLogicManager {
     const onUnCapsModWork = () => {
     };
 
-    const shiftObserver = new ElementClassObserver(
+    const capsObserver = new ElementClassObserver(
       this.keyCaps,
       'key-base--pressed',
       onCapsModWork,
       onUnCapsModWork,
     );
 
-    shiftObserver.init();
-    shiftObserver.observe();
+    capsObserver.init();
+    capsObserver.observe();
   }
 
   listenVirtualKeyboard() {

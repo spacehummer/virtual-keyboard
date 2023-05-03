@@ -158,33 +158,33 @@ export default class BasicStructureGenerator {
     this.header.lastElementChild.appendChild(headingH1);
   }
 
-  getInscriptionForKey(elementForInscription, key, symbolMod) {
+  getInscriptionForKey(elementForInscription, key, symbolMod, lang) {
     const elementForInscriptionLocal = elementForInscription;
     switch (symbolMod) {
       case 'symbolDefault': {
-        elementForInscriptionLocal.innerHTML = this.inscriptions[this.language][key]
+        elementForInscriptionLocal.innerHTML = this.inscriptions[lang][key]
           .symbolDefault.symbol;
         break;
       }
       case 'symbolShiftMod': {
-        elementForInscriptionLocal.innerHTML = this.inscriptions[this.language][key]
+        elementForInscriptionLocal.innerHTML = this.inscriptions[lang][key]
           .symbolShiftMod.symbol !== 'none'
-          ? this.inscriptions[this.language][key].symbolShiftMod.symbol
-          : this.inscriptions[this.language][key].symbolDefault.symbol;
+          ? this.inscriptions[lang][key].symbolShiftMod.symbol
+          : this.inscriptions[lang][key].symbolDefault.symbol;
         break;
       }
       case 'symbolCapsMod': {
-        elementForInscriptionLocal.innerHTML = this.inscriptions[this.language][key]
+        elementForInscriptionLocal.innerHTML = this.inscriptions[lang][key]
           .symbolCapsMod.symbol !== 'none'
-          ? this.inscriptions[this.language][key].symbolCapsMod.symbol
-          : this.inscriptions[this.language][key].symbolDefault.symbol;
+          ? this.inscriptions[lang][key].symbolCapsMod.symbol
+          : this.inscriptions[lang][key].symbolDefault.symbol;
         break;
       }
       case 'symbolCapsShiftMod': {
-        elementForInscriptionLocal.innerHTML = this.inscriptions[this.language][key]
+        elementForInscriptionLocal.innerHTML = this.inscriptions[lang][key]
           .symbolCapsShiftMod.symbol !== 'none'
-          ? this.inscriptions[this.language][key].symbolCapsShiftMod.symbol
-          : this.inscriptions[this.language][key].symbolDefault.symbol;
+          ? this.inscriptions[lang][key].symbolCapsShiftMod.symbol
+          : this.inscriptions[lang][key].symbolDefault.symbol;
         break;
       }
       default: {
@@ -209,25 +209,45 @@ export default class BasicStructureGenerator {
       switch (index) {
         case 0: {
           elementLocal.classList.add('key-layout--default');
-          this.getInscriptionForKey(elementLocal, keyNumberLocal, 'symbolDefault');
+          this.getInscriptionForKey(
+            elementLocal,
+            keyNumberLocal,
+            'symbolDefault',
+            keyLayoutLanguage,
+          );
           break;
         }
         case 1: {
           elementLocal.classList.add('key-layout--shift-mod');
           elementLocal.classList.add('key-layout--hidden');
-          this.getInscriptionForKey(elementLocal, keyNumberLocal, 'symbolShiftMod');
+          this.getInscriptionForKey(
+            elementLocal,
+            keyNumberLocal,
+            'symbolShiftMod',
+            keyLayoutLanguage,
+          );
           break;
         }
         case 2: {
           elementLocal.classList.add('key-layout--caps-mod');
           elementLocal.classList.add('key-layout--hidden');
-          this.getInscriptionForKey(elementLocal, keyNumberLocal, 'symbolCapsMod');
+          this.getInscriptionForKey(
+            elementLocal,
+            keyNumberLocal,
+            'symbolCapsMod',
+            keyLayoutLanguage,
+          );
           break;
         }
         case 3: {
           elementLocal.classList.add('key-layout--caps-and-shift-mod');
           elementLocal.classList.add('key-layout--hidden');
-          this.getInscriptionForKey(elementLocal, keyNumberLocal, 'symbolCapsShiftMod');
+          this.getInscriptionForKey(
+            elementLocal,
+            keyNumberLocal,
+            'symbolCapsShiftMod',
+            keyLayoutLanguage,
+          );
           break;
         }
         default: {

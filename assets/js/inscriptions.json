@@ -1326,24 +1326,20 @@
       "eventCode": "Backquote",
       "row": "1",
       "symbolDefault": {
-        "symbol": "`",
-        "mnemonicHTML": "&#96;",
-        "name": "Grave Accent"
+        "symbol": "ё",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "~",
-        "mnemonicHTML": "&#96;",
-        "name": "Tilde"
+        "symbol": "Ё",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "`",
-        "mnemonicHTML": "&#96;",
-        "name": "Grave Accent"
+        "symbol": "Ё",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "~",
-        "mnemonicHTML": "&#96;",
-        "name": "Tilde"
+        "symbol": "ё",
+        "name": ""
       }
     },
     "2": {
@@ -1374,8 +1370,7 @@
         "name": "Digit Two"
       },
       "symbolShiftMod": {
-        "symbol": "@",
-        "mnemonicHTML": "&#96;",
+        "symbol": "\"",
         "name": "Commercial At"
       },
       "symbolCapsMod": {
@@ -1383,8 +1378,7 @@
         "name": "Digit Two"
       },
       "symbolCapsShiftMod": {
-        "symbol": "@",
-        "mnemonicHTML": "&#96;",
+        "symbol": "\"",
         "name": "Commercial At"
       }
     },
@@ -1396,18 +1390,16 @@
         "name": "Digit Three"
       },
       "symbolShiftMod": {
-        "symbol": "#",
-        "mnemonicHTML": "&#35;",
-        "name": "Number Sign"
+        "symbol": "№",
+        "name": ""
       },
       "symbolCapsMod": {
         "symbol": "3",
         "name": "Digit Three"
       },
       "symbolCapsShiftMod": {
-        "symbol": "#",
-        "mnemonicHTML": "&#35;",
-        "name": "Number Sign"
+        "symbol": "№",
+        "name": ""
       }
     },
     "5": {
@@ -1418,18 +1410,16 @@
         "name": "Digit Four"
       },
       "symbolShiftMod": {
-        "symbol": "@",
-        "mnemonicHTML": "&#96;",
-        "name": "Dollar Sign"
+        "symbol": ";",
+        "name": ""
       },
       "symbolCapsMod": {
         "symbol": "4",
         "name": "Digit Four"
       },
       "symbolCapsShiftMod": {
-        "symbol": "@",
-        "mnemonicHTML": "&#96;",
-        "name": "Dollar Sign"
+        "symbol": ";",
+        "name": ""
       }
     },
     "6": {
@@ -1462,18 +1452,16 @@
         "name": "Digit Six"
       },
       "symbolShiftMod": {
-        "symbol": "^",
-        "mnemonicHTML": "&#96;",
-        "name": "Circumflex Accent"
+        "symbol": ":",
+        "name": ""
       },
       "symbolCapsMod": {
         "symbol": "6",
         "name": "Digit Six"
       },
       "symbolCapsShiftMod": {
-        "symbol": "^",
-        "mnemonicHTML": "&#96;",
-        "name": "Circumflex Accent"
+        "symbol": ":",
+        "name": ""
       }
     },
     "8": {
@@ -1484,18 +1472,16 @@
         "name": "Digit Seven"
       },
       "symbolShiftMod": {
-        "symbol": "&",
-        "mnemonicHTML": "&#96;",
-        "name": "Ampersand"
+        "symbol": "?",
+        "name": ""
       },
       "symbolCapsMod": {
         "symbol": "7",
         "name": "Digit Seven"
       },
       "symbolCapsShiftMod": {
-        "symbol": "&",
-        "mnemonicHTML": "&#96;",
-        "name": "Ampersand"
+        "symbol": "?",
+        "name": ""
       }
     },
     "9": {
@@ -1648,248 +1634,240 @@
       "eventCode": "KeyQ",
       "row": "2",
       "symbolDefault": {
-        "symbol": "q",
-        "name": "Latin Small Letter Q"
+        "symbol": "й",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "Q",
-        "name": "Latin Capital Letter Q"
+        "symbol": "Й",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "Q",
-        "name": "Latin Capital Letter Q"
+        "symbol": "Й",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "q",
-        "name": "Latin Small Letter Q"
+        "symbol": "й",
+        "name": ""
       }
     },
     "17": {
       "eventCode": "KeyW",
       "row": "2",
       "symbolDefault": {
-        "symbol": "w",
-        "name": "Latin Small Letter W"
+        "symbol": "ц",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "W",
-        "name": "Latin Capital Letter W"
+        "symbol": "Ц",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "W",
-        "name": "Latin Capital Letter W"
+        "symbol": "Ц",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "w",
-        "name": "Latin Small Letter W"
+        "symbol": "ц",
+        "name": ""
       }
     },
     "18": {
       "eventCode": "KeyE",
       "row": "2",
       "symbolDefault": {
-        "symbol": "e",
-        "name": "Latin Small Letter E"
+        "symbol": "у",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "E",
-        "name": "Latin Capital Letter E"
+        "symbol": "У",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "E",
-        "name": "Latin Capital Letter E"
+        "symbol": "У",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "e",
-        "name": "Latin Small Letter E"
+        "symbol": "у",
+        "name": ""
       }
     },
     "19": {
       "eventCode": "KeyR",
       "row": "2",
       "symbolDefault": {
-        "symbol": "r",
-        "name": "Latin Small Letter R"
+        "symbol": "к",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "R",
-        "name": "Latin Capital Letter R"
+        "symbol": "К",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "R",
-        "name": "Latin Capital Letter R"
+        "symbol": "К",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "r",
-        "name": "Latin Small Letter R"
+        "symbol": "к",
+        "name": ""
       }
     },
     "20": {
       "eventCode": "KeyT",
       "row": "2",
       "symbolDefault": {
-        "symbol": "t",
-        "name": "Latin Small Letter T"
+        "symbol": "е",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "T",
-        "name": "Latin Capital Letter T"
+        "symbol": "Е",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "T",
-        "name": "Latin Capital Letter T"
+        "symbol": "Е",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "t",
-        "name": "Latin Small Letter T"
+        "symbol": "е",
+        "name": ""
       }
     },
     "21": {
       "eventCode": "KeyY",
       "row": "2",
       "symbolDefault": {
-        "symbol": "y",
-        "name": "Latin Small Letter Y"
+        "symbol": "н",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "Y",
-        "name": "Latin Capital Letter Y"
+        "symbol": "Н",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "Y",
-        "name": "Latin Capital Letter Y"
+        "symbol": "Н",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "y",
-        "name": "Latin Small Letter Y"
+        "symbol": "н",
+        "name": ""
       }
     },
     "22": {
       "eventCode": "KeyU",
       "row": "2",
       "symbolDefault": {
-        "symbol": "u",
-        "name": "Latin Small Letter U"
+        "symbol": "г",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "U",
-        "name": "Latin Capital Letter U"
+        "symbol": "Г",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "U",
-        "name": "Latin Capital Letter U"
+        "symbol": "Г",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "u",
-        "name": "Latin Small Letter U"
+        "symbol": "г",
+        "name": ""
       }
     },
     "23": {
       "eventCode": "KeyI",
       "row": "2",
       "symbolDefault": {
-        "symbol": "i",
-        "name": "Latin Small Letter I"
+        "symbol": "ш",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "I",
-        "name": "Latin Capital Letter I"
+        "symbol": "Ш",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "I",
-        "name": "Latin Capital Letter I"
+        "symbol": "Ш",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "i",
-        "name": "Latin Small Letter I"
+        "symbol": "ш",
+        "name": ""
       }
     },
     "24": {
       "eventCode": "KeyO",
       "row": "2",
       "symbolDefault": {
-        "symbol": "o",
-        "name": "Latin Small Letter O"
+        "symbol": "щ",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "O",
-        "name": "Latin Capital Letter O"
+        "symbol": "Щ",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "O",
-        "name": "Latin Capital Letter O"
+        "symbol": "Щ",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "o",
-        "name": "Latin Small Letter O"
+        "symbol": "щ",
+        "name": ""
       }
     },
     "25": {
       "eventCode": "KeyP",
       "row": "2",
       "symbolDefault": {
-        "symbol": "p",
-        "name": "Latin Small Letter P"
+        "symbol": "з",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "P",
-        "name": "Latin Capital Letter P"
+        "symbol": "З",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "P",
-        "name": "Latin Capital Letter P"
+        "symbol": "З",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "p",
-        "name": "Latin Small Letter P"
+        "symbol": "з",
+        "name": ""
       }
     },
     "26": {
       "eventCode": "BracketLeft",
       "row": "2",
       "symbolDefault": {
-        "symbol": "[",
-        "mnemonicHTML": "&#91;",
-        "name": "Left Square Bracket"
+        "symbol": "х",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "{",
-        "mnemonicHTML": "&#123;",
-        "name": "Left Curly Bracket"
+        "symbol": "Х",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "[",
-        "mnemonicHTML": "&#91;",
-        "name": "Left Square Bracket"
+        "symbol": "Х",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "{",
-        "mnemonicHTML": "&#123;",
-        "name": "Left Curly Bracket"
+        "symbol": "х",
+        "name": ""
       }
     },
     "27": {
       "eventCode": "BracketRight",
       "row": "2",
       "symbolDefault": {
-        "symbol": "]",
-        "mnemonicHTML": "&#93;",
-        "name": "Right Square Bracket"
+        "symbol": "ъ",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "}",
-        "mnemonicHTML": "&#125;",
-        "name": "Right Curly Bracket"
+        "symbol": "Ъ",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "]",
-        "mnemonicHTML": "&#93;",
-        "name": "Right Square Bracket"
+        "symbol": "Ъ",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "}",
-        "mnemonicHTML": "&#125;",
-        "name": "Right Curly Bracket"
+        "symbol": "ъ",
+        "name": ""
       }
     },
     "28": {
@@ -1901,9 +1879,8 @@
         "name": "Reverse Solidus"
       },
       "symbolShiftMod": {
-        "symbol": "|",
-        "mnemonicHTML": "&#124;",
-        "name": "Vertical Line"
+        "symbol": "/",
+        "name": ""
       },
       "symbolCapsMod": {
         "symbol": "\\",
@@ -1911,9 +1888,8 @@
         "name": "Reverse Solidus"
       },
       "symbolCapsShiftMod": {
-        "symbol": "|",
-        "mnemonicHTML": "&#124;",
-        "name": "Vertical Line"
+        "symbol": "/",
+        "name": ""
       }
     },
     "29": {
@@ -1940,224 +1916,220 @@
       "eventCode": "KeyA",
       "row": "3",
       "symbolDefault": {
-        "symbol": "a",
-        "name": "Latin Small Letter A"
+        "symbol": "ф",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "A",
-        "name": "Latin Capital Letter A"
+        "symbol": "Ф",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "A",
-        "name": "Latin Capital Letter A"
+        "symbol": "Ф",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "a",
-        "name": "Latin Small Letter A"
+        "symbol": "ф",
+        "name": ""
       }
     },
     "31": {
       "eventCode": "KeyS",
       "row": "3",
       "symbolDefault": {
-        "symbol": "s",
-        "name": "Latin Small Letter S"
+        "symbol": "ы",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "S",
-        "name": "Latin Capital Letter S"
+        "symbol": "Ы",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "S",
-        "name": "Latin Capital Letter S"
+        "symbol": "Ы",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "s",
-        "name": "Latin Small Letter S"
+        "symbol": "ы",
+        "name": ""
       }
     },
     "32": {
       "eventCode": "KeyD",
       "row": "3",
       "symbolDefault": {
-        "symbol": "d",
-        "name": "Latin Small Letter D"
+        "symbol": "в",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "D",
-        "name": "Latin Capital Letter D"
+        "symbol": "В",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "D",
-        "name": "Latin Capital Letter D"
+        "symbol": "В",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "d",
-        "name": "Latin Small Letter D"
+        "symbol": "в",
+        "name": ""
       }
     },
     "33": {
       "eventCode": "KeyF",
       "row": "3",
       "symbolDefault": {
-        "symbol": "f",
-        "name": "Latin Small Letter F"
+        "symbol": "а",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "F",
-        "name": "Latin Capital Letter F"
+        "symbol": "А",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "F",
-        "name": "Latin Capital Letter F"
+        "symbol": "А",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "f",
-        "name": "Latin Small Letter F"
+        "symbol": "а",
+        "name": ""
       }
     },
     "34": {
       "eventCode": "KeyG",
       "row": "3",
       "symbolDefault": {
-        "symbol": "g",
-        "name": "Latin Small Letter G"
+        "symbol": "п",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "G",
-        "name": "Latin Capital Letter G"
+        "symbol": "П",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "G",
-        "name": "Latin Capital Letter G"
+        "symbol": "П",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "g",
-        "name": "Latin Small Letter G"
+        "symbol": "п",
+        "name": ""
       }
     },
     "35": {
       "eventCode": "KeyH",
       "row": "3",
       "symbolDefault": {
-        "symbol": "h",
-        "name": "Latin Small Letter H"
+        "symbol": "р",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "H",
-        "name": "Latin Capital Letter H"
+        "symbol": "Р",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "H",
-        "name": "Latin Capital Letter H"
+        "symbol": "Р",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "h",
-        "name": "Latin Small Letter H"
+        "symbol": "р",
+        "name": ""
       }
     },
     "36": {
       "eventCode": "KeyJ",
       "row": "3",
       "symbolDefault": {
-        "symbol": "j",
-        "name": "Latin Small Letter J"
+        "symbol": "о",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "J",
-        "name": "Latin Capital Letter J"
+        "symbol": "О",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "J",
-        "name": "Latin Capital Letter J"
+        "symbol": "О",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "j",
-        "name": "Latin Small Letter J"
+        "symbol": "о",
+        "name": ""
       }
     },
     "37": {
       "eventCode": "KeyK",
       "row": "3",
       "symbolDefault": {
-        "symbol": "k",
-        "name": "Latin Small Letter K"
+        "symbol": "л",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "K",
-        "name": "Latin Capital Letter K"
+        "symbol": "Л",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "K",
-        "name": "Latin Capital Letter K"
+        "symbol": "Л",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "k",
-        "name": "Latin Small Letter K"
+        "symbol": "л",
+        "name": ""
       }
     },
     "38": {
       "eventCode": "KeyL",
       "row": "3",
       "symbolDefault": {
-        "symbol": "l",
-        "name": "Latin Small Letter L"
+        "symbol": "д",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "L",
-        "name": "Latin Capital Letter L"
+        "symbol": "Д",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "L",
-        "name": "Latin Capital Letter L"
+        "symbol": "Д",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "l",
-        "name": "Latin Small Letter L"
+        "symbol": "д",
+        "name": ""
       }
     },
     "39": {
       "eventCode": "Semicolon",
       "row": "3",
       "symbolDefault": {
-        "symbol": ";",
-        "name": "Semicolon"
+        "symbol": "ж",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": ":",
-        "name": "Colon"
+        "symbol": "Ж",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": ";",
-        "name": "Semicolon"
+        "symbol": "Ж",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": ":",
-        "name": "Colon"
+        "symbol": "ж",
+        "name": ""
       }
     },
     "40": {
       "eventCode": "Quote",
       "row": "3",
       "symbolDefault": {
-        "symbol": "'",
-        "mnemonicHTML": "&#39;",
-        "name": "Apostrophe"
+        "symbol": "э",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "\"",
-        "mnemonicHTML": "&#34;",
-        "name": "Quotation Mark"
+        "symbol": "Э",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "'",
-        "mnemonicHTML": "&#39;",
-        "name": "Apostrophe"
+        "symbol": "Э",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "\"",
-        "mnemonicHTML": "&#34;",
-        "name": "Quotation Mark"
+        "symbol": "э",
+        "name": ""
       }
     },
     "41": {
@@ -2204,202 +2176,200 @@
       "eventCode": "KeyZ",
       "row": "4",
       "symbolDefault": {
-        "symbol": "z",
-        "name": "Latin Small Letter Z"
+        "symbol": "я",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "Z",
-        "name": "Latin Capital Letter Z"
+        "symbol": "Я",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "Z",
-        "name": "Latin Capital Letter Z"
+        "symbol": "Я",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "z",
-        "name": "Latin Small Letter Z"
+        "symbol": "я",
+        "name": ""
       }
     },
     "44": {
       "eventCode": "KeyX",
       "row": "4",
       "symbolDefault": {
-        "symbol": "x",
-        "name": "Latin Small Letter X"
+        "symbol": "ч",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "X",
-        "name": "Latin Capital Letter X"
+        "symbol": "Ч",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "X",
-        "name": "Latin Capital Letter X"
+        "symbol": "Ч",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "x",
-        "name": "Latin Small Letter X"
+        "symbol": "ч",
+        "name": ""
       }
     },
     "45": {
       "eventCode": "KeyC",
       "row": "4",
       "symbolDefault": {
-        "symbol": "c",
-        "name": "Latin Small Letter C"
+        "symbol": "с",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "C",
-        "name": "Latin Capital Letter C"
+        "symbol": "С",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "C",
-        "name": "Latin Capital Letter C"
+        "symbol": "С",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "c",
-        "name": "Latin Small Letter C"
+        "symbol": "с",
+        "name": ""
       }
     },
     "46": {
       "eventCode": "KeyV",
       "row": "4",
       "symbolDefault": {
-        "symbol": "v",
-        "name": "Latin Small Letter V"
+        "symbol": "м",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "V",
-        "name": "Latin Capital Letter V"
+        "symbol": "М",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "V",
-        "name": "Latin Capital Letter V"
+        "symbol": "М",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "v",
-        "name": "Latin Small Letter V"
+        "symbol": "м",
+        "name": ""
       }
     },
     "47": {
       "eventCode": "KeyB",
       "row": "4",
       "symbolDefault": {
-        "symbol": "b",
-        "name": "Latin Small Letter B"
+        "symbol": "и",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "B",
-        "name": "Latin Capital Letter B"
+        "symbol": "И",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "B",
-        "name": "Latin Capital Letter B"
+        "symbol": "И",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "b",
-        "name": "Latin Small Letter B"
+        "symbol": "и",
+        "name": ""
       }
     },
     "48": {
       "eventCode": "KeyN",
       "row": "4",
       "symbolDefault": {
-        "symbol": "n",
-        "name": "Latin Small Letter N"
+        "symbol": "т",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "N",
-        "name": "Latin Capital Letter N"
+        "symbol": "Т",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "N",
-        "name": "Latin Capital Letter N"
+        "symbol": "Т",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "n",
-        "name": "Latin Small Letter N"
+        "symbol": "т",
+        "name": ""
       }
     },
     "49": {
       "eventCode": "KeyM",
       "row": "4",
       "symbolDefault": {
-        "symbol": "m",
-        "name": "Latin Small Letter M"
+        "symbol": "ь",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "M",
-        "name": "Latin Capital Letter M"
+        "symbol": "Ь",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "M",
-        "name": "Latin Capital Letter M"
+        "symbol": "Ь",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "m",
-        "name": "Latin Small Letter M"
+        "symbol": "ь",
+        "name": ""
       }
     },
     "50": {
       "eventCode": "Comma",
       "row": "4",
       "symbolDefault": {
-        "symbol": ",",
-        "name": "Comma"
+        "symbol": "б",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "<",
-        "name": "Less-Than Sign"
+        "symbol": "Б",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": ",",
-        "name": "Comma"
+        "symbol": "Б",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "<",
-        "name": "Less-Than Sign"
+        "symbol": "б",
+        "name": ""
       }
     },
     "51": {
       "eventCode": "Period",
       "row": "4",
       "symbolDefault": {
-        "symbol": ".",
-        "name": "Full Stop (Dot)"
+        "symbol": "ю",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": ">",
-        "name": "Greater-Than Sign"
+        "symbol": "Ю",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": ".",
-        "name": "Full Stop (Dot)"
+        "symbol": "Ю",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": ">",
-        "name": "Greater-Than Sign"
+        "symbol": "ю",
+        "name": ""
       }
     },
     "52": {
       "eventCode": "Slash",
       "row": "4",
       "symbolDefault": {
-        "symbol": "/",
-        "mnemonicHTML": "&#47;",
-        "name": "Solidus"
+        "symbol": ".",
+        "name": ""
       },
       "symbolShiftMod": {
-        "symbol": "?",
-        "name": "Question Mark"
+        "symbol": ",",
+        "name": ""
       },
       "symbolCapsMod": {
-        "symbol": "/",
-        "mnemonicHTML": "&#47;",
-        "name": "Solidus"
+        "symbol": ".",
+        "name": ""
       },
       "symbolCapsShiftMod": {
-        "symbol": "?",
-        "name": "Question Mark"
+        "symbol": ",",
+        "name": ""
       }
     },
     "53": {

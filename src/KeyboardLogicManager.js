@@ -226,6 +226,17 @@ export default class KeyboardLogicManager {
     }
   }
 
+  deleteSymbolAfterCaret() {
+    if (this.textField.selectionStart || this.textField.selectionStart === '0') {
+      const startPos = this.textField.selectionStart;
+      const endPos = this.textField.selectionEnd;
+      this.textField.value = this.textField.value.substring(0, startPos)
+        + this.textField.value.substring(endPos + 1, this.textField.value.length);
+      this.textField.selectionStart = startPos;
+      this.textField.selectionEnd = startPos;
+    }
+  }
+
   deleteAll() {
     this.textField.value = '';
     this.textField.dispatchEvent(this.textFieldChangeEvent);
@@ -269,7 +280,7 @@ export default class KeyboardLogicManager {
           break;
         }
         case 'Del': {
-          this.deleteAll();
+          this.deleteSymbolAfterCaret();
           break;
         }
         case 'Space': {

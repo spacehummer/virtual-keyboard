@@ -49,6 +49,7 @@ function windowOnLoadWork() {
 
   keyboardManager.listenPhysicalKeyboard();
   keyboardManager.listenVirtualKeyboard();
+  keyboardManager.observeControlLeftState();
   keyboardManager.observeShiftState();
   keyboardManager.observeCapsState();
 }

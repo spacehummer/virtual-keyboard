@@ -135,8 +135,8 @@
 }
 
 .keys__key-base:active,
-.key-base--pressed,
-.keys__key-base:hover.key-base--pressed,
+.key-base--pressed:not(.key-base--pressed.key-base--unpressed-lock),
+.keys__key-base:hover.key-base--pressed:not(.key-base--pressed.key-base--unpressed-lock),
 .key-base--hold,
 .keys__key-base:hover.key-base--hold {
     background-color: rgb(138, 138, 138);

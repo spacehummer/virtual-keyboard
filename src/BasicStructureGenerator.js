@@ -260,6 +260,8 @@ export default class BasicStructureGenerator {
         );
 
         key.appendChild(this.generateKeyLayouts('en', keyNumberTmp));
+        key.appendChild(this.generateKeyLayouts('ru', keyNumberTmp));
+        key.lastElementChild.classList.add('ru-keys--hidden');
 
         /* Add styles for keys with non-standard sizes. */
         switch ((this.inscriptions[this.language][keyNumberTmp].symbolDefault.symbol)) {

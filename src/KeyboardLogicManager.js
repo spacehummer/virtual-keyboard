@@ -137,6 +137,7 @@ export default class KeyboardLogicManager {
     const eventCodeExceptions = [
       'MetaLeft',
       'MetaRight',
+      'AltGraph',
     ];
 
     /* Get current key event into class field */
@@ -167,13 +168,30 @@ export default class KeyboardLogicManager {
       }
     }
 
-    const lastKeyHit = event.code;
+    function disableKeyState(key, eventLocal) {
+      console.log(key);
+      /* Change visual */
+      if (eventLocal.type === 'keydown') {
+        console.log(key);
+        key.classList.add('key-base--unpressed-lock');
+        virtualKeyboardSimulateClickOn(key);
+      } else if (eventLocal.type === 'keyup') {
+        key.classList.add('key-base--unpressed-lock');
+      }
+    }
 
-    if (!eventCodeExceptions.includes(lastKeyHit)) {
-      this.searchKeyByDataAtrAndActions(lastKeyHit, changeKeyState);
-    } else if (
-      lastKeyHit === 'MetaLeft'
-      || lastKeyHit === 'MetaRight'
+    const lastKeyHitByCode = event.code;
+    const lastKeyHitByKey = event.key;
+
+    if (lastKeyHitByKey === 'AltGraph') {
+      this.searchKeyByDataAtrAndActions('ControlLeft', disableKeyState);
+      this.searchKeyByDataAtrAndActions('AltRight', changeKeyState);
+    } else if (!eventCodeExceptions.includes(lastKeyHitByCode)) {
+      this.searchKeyByDataAtrAndActions(lastKeyHitByCode, changeKeyState);
+    } else if
+    (
+      lastKeyHitByCode === 'MetaLeft'
+      || lastKeyHitByCode === 'MetaRight'
     ) {
       this.searchKeyByDataAtrAndActions('MetaLeft', changeKeyState);
     }

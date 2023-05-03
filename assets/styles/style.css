@@ -136,7 +136,9 @@
 
 .keys__key-base:active,
 .key-base--pressed,
-.keys__key-base:hover.key-base--pressed {
+.keys__key-base:hover.key-base--pressed,
+.key-base--hold,
+.keys__key-base:hover.key-base--hold {
     background-color: rgb(138, 138, 138);
     color: rgb(20, 255, 185);
     text-shadow: 0 0 4px rgb(16, 210, 153);

@@ -1,3 +1,5 @@
+import ElementClassObserver from './ElementClassObserver';
+
 /**
  * KeyboardLogicManager class for implement the logic of the virtual keyboard.
  */
@@ -36,6 +38,10 @@ export default class KeyboardLogicManager {
   lastKeyEvent;
 
   textFieldChangeEvent;
+
+  keyShift;
+
+  keyCaps;
 
   capsState;
 
@@ -97,6 +103,9 @@ export default class KeyboardLogicManager {
 
     /* Make event for change text area */
     this.textFieldChangeEvent = new Event('change');
+
+    this.keyShift = document.querySelector('[data-event-code="ShiftLeft"]');
+    this.keyCaps = document.querySelector('[data-event-code="CapsLock"]');
 
     this.capsState = false;
     this.shiftState = false;
@@ -227,10 +236,134 @@ export default class KeyboardLogicManager {
   /* TODO: We need use event.code instead event.key!
    * */
 
+  changeModLayout() {
+    const keys = [...document.querySelectorAll('.keys__key-base')];
+    if ((this.capsState === false) && (this.shiftState === false)) {
+      keys.forEach((key) => {
+        key.querySelector('.key-layout--default').classList
+          .remove('key-layout--hidden');
+        key.querySelector('.key-layout--shift-mod').classList
+          .add('key-layout--hidden');
+        key.querySelector('.key-layout--caps-mod').classList
+          .add('key-layout--hidden');
+        key.querySelector('.key-layout--caps-and-shift-mod').classList
+          .add('key-layout--hidden');
+      });
+    } else if ((this.capsState === false) && (this.shiftState === true)) {
+      keys.forEach((key) => {
+        key.querySelector('.key-layout--default').classList
+          .add('key-layout--hidden');
+        key.querySelector('.key-layout--shift-mod').classList
+          .remove('key-layout--hidden');
+        key.querySelector('.key-layout--caps-mod').classList
+          .add('key-layout--hidden');
+        key.querySelector('.key-layout--caps-and-shift-mod').classList
+          .add('key-layout--hidden');
+      });
+    } else if ((this.capsState === true) && (this.shiftState === false)) {
+      keys.forEach((key) => {
+        key.querySelector('.key-layout--default').classList
+          .add('key-layout--hidden');
+        key.querySelector('.key-layout--shift-mod').classList
+          .add('key-layout--hidden');
+        key.querySelector('.key-layout--caps-mod').classList
+          .remove('key-layout--hidden');
+        key.querySelector('.key-layout--caps-and-shift-mod').classList
+          .add('key-layout--hidden');
+      });
+    }
+  }
+
+  modStateManager(signal) {
+    switch (signal) {
+      case 'caps': {
+        if (this.capsState === false) {
+          this.capsState = true;
+          this.changeModLayout();
+          if (this.verboseLvl > 1) {
+            console.log('---- Caps mod on!');
+          }
+          this.keyCaps.classList.add('key-base--hold');
+        } else if (this.capsState === true) {
+          this.capsState = false;
+          this.changeModLayout();
+          if (this.verboseLvl > 1) {
+            console.log('---- Caps mod on!');
+          }
+          this.keyCaps.classList.remove('key-base--hold');
+        }
+        break;
+      }
+      case 'shift': {
+        if (this.shiftState === false) {
+          this.shiftState = true;
+          this.changeModLayout();
+          if (this.verboseLvl > 1) {
+            console.log('---- Caps mod on!');
+          }
+          this.keyCaps.classList.add('key-base--hold');
+        } else if (this.shiftState === true) {
+          this.shiftState = false;
+          this.changeModLayout();
+          if (this.verboseLvl > 1) {
+            console.log('---- Caps mod on!');
+          }
+          this.keyCaps.classList.remove('key-base--hold');
+        }
+        break;
+      }
+      default: {
+        break;
+      }
+    }
+  }
+
   observeShiftState() {
-    /* TODO: implement class!
+    /* TODO: implement class?
      *  Observe Shift state by observe shift key class changing in DOM
      * */
+    const verboseLvlLocal = this.verboseLvl;
+
+    function onShiftModWork() {
+      if (verboseLvlLocal > 1) {
+        console.log('---- Shift mod on!');
+      }
+    }
+
+    function onUnShiftModWork() {
+      if (verboseLvlLocal > 1) {
+        console.log('---- Shift mod off!');
+      }
+    }
+
+    const shiftObserver = new ElementClassObserver(
+      this.keyShift,
+      'key-base--pressed',
+      onShiftModWork,
+      onUnShiftModWork,
+    );
+
+    shiftObserver.init();
+    shiftObserver.observe();
+  }
+
+  observeCapsState() {
+    const onCapsModWork = () => {
+      this.modStateManager('caps');
+    };
+
+    const onUnCapsModWork = () => {
+    };
+
+    const shiftObserver = new ElementClassObserver(
+      this.keyCaps,
+      'key-base--pressed',
+      onCapsModWork,
+      onUnCapsModWork,
+    );
+
+    shiftObserver.init();
+    shiftObserver.observe();
   }
 
   listenVirtualKeyboard() {

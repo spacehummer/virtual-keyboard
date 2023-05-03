@@ -44,11 +44,13 @@ function windowOnLoadWork() {
   const keyboardManager = new KeyboardLogicManager(
     'body',
     '.keyboard-and-display',
-    1,
+    debug,
   );
 
   keyboardManager.listenPhysicalKeyboard();
   keyboardManager.listenVirtualKeyboard();
+  keyboardManager.observeShiftState();
+  keyboardManager.observeCapsState();
 }
 
 /* Start onload work */

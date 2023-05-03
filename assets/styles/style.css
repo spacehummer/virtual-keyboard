@@ -1,0 +1,222 @@
+/* Variables */
+:root {
+    /* Colors for placeholders bg */
+    --placeholder-bg-1-1: #8ca0ff;
+    --placeholder-bg-1-2: #ffa08c;
+    --placeholder-bg-1-3: #ffff64;
+    --placeholder-bg-1-4: #8cffa0;
+
+    --placeholder-bg-2-1: #2C5D37;
+    --placeholder-bg-2-2: #E3C515;
+    --placeholder-bg-2-3: #EE51B1;
+    --placeholder-bg-2-4: #A59CD3;
+    --placeholder-bg-2-5: #4B2D9F;
+
+    /* Colors for placeholders elements/text */
+    --placeholder-color-1: #02C9AF;
+    --placeholder-color-2: #049CE4;
+    --placeholder-color-3: #FE00EC;
+    --placeholder-color-4: #2B4F8D;
+    --placeholder-color-5: #011034;
+
+    /* BGs */
+    --dark-bg-for-buttons: #404040;
+}
+
+* {
+    box-sizing: border-box;
+    /* outline: solid red 1px; */
+}
+
+.root-container {
+    /* Display */
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Font */
+    font-family: 'Arial', sans-serif;
+    font-weight: 400;
+    /* Size */
+    min-height: 100vh;
+}
+
+.container {
+    /* Size */
+    /*max-width: 1280px;*/
+    max-width: fit-content;
+    /* Margins */
+    margin: 0 auto;
+}
+
+.container--footer {
+    text-align: center;
+}
+
+.header__heading {
+    /* Size */
+    width: fit-content;
+    /* Margins */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.keyboard__display {
+    /* Size */
+    width: 100%;
+    height: 100%;
+    min-height: 128px;
+    max-height: 256px;
+}
+
+.keyboard__keys-container {
+    /* Vars */
+    --key-base-width: 48px;
+    --key-base-height: 48px;
+    /* Display */
+    display: grid;
+    grid-template-columns: repeat(calc(15 * 6 + 14), calc(var(--key-base-width) / 6));
+    grid-template-rows: repeat(calc(5 * 6 + 4), calc(var(--key-base-width) / 6));
+    grid-auto-rows: var(--key-base-height);
+    /*grid-auto-columns: var(--key-base-width);*/
+    /*row-gap: 8px;*/
+    /*column-gap: 8px;*/
+    /* Size */
+    width: fit-content;
+    /* Margins */
+    margin: 0 auto;
+}
+
+.keys__column-gap {
+    /* Grid */
+    grid-column: span 1;
+    grid-row: span 6;
+}
+
+.keys__row-gap {
+    /* Grid */
+    grid-column: span 104;
+    height: 8px;
+}
+
+.keys__key-base {
+    /* Grid */
+    grid-row: span 6;
+    grid-column: span 6;
+    /* Font */
+    font-size: 15px;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+    /* Visual */
+    border: none;
+    background-color: rgb(173, 173, 173);
+    /* Animation */
+    transition: 800ms;
+    /* Behaviour */
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version
+    /* Margins */
+    padding: 0;
+    /*margin: 4px;*/
+}
+
+.keys__key-base:hover {
+    /* Font */
+    color: rgb(255, 208, 20);
+    text-shadow: 0 0 1px rgb(209, 171, 17);
+    /* Visual */
+    background-color: rgb(162, 162, 162);
+    /* Animation */
+    transition: 500ms;
+}
+
+.keys__key-base:active,
+.key-base--pressed:not(.key-base--pressed.key-base--unpressed-lock),
+.keys__key-base:hover.key-base--pressed:not(.key-base--pressed.key-base--unpressed-lock),
+.key-base--hold,
+.keys__key-base:hover.key-base--hold {
+    background-color: rgb(138, 138, 138);
+    color: rgb(20, 255, 185);
+    text-shadow: 0 0 4px rgb(16, 210, 153);
+    border: 2px solid rgb(114, 114, 114);
+    transition: 300ms;
+}
+
+.en-keys--hidden,
+.ru-keys--hidden {
+    display: none;
+}
+
+.key-layout--hidden {
+    display: none;
+}
+
+
+.key-base--backspace {
+    /* Grid */
+    grid-column: span 13;
+}
+
+.key-base--tab {
+    /* Grid */
+    grid-column: span 8;
+}
+
+.key-base--backslash {
+    /* Grid */
+    grid-column: span 11;
+}
+
+.key-base--capslock {
+    /* Grid */
+    grid-column: span 10;
+}
+
+.key-base--enter {
+    /* Grid */
+    grid-column: span 16;
+}
+
+.key-base--shift-left {
+    /* Grid */
+    grid-column: span 13;
+}
+
+.key-base--shift-right {
+    /* Grid */
+    grid-column: span 6;
+}
+
+.key-base--ctrl-left {
+    /* Grid */
+    grid-column: span 8;
+}
+
+.key-base--ctrl-right {
+    /* Grid */
+    grid-column: span 6;
+}
+
+.key-base--win-left {
+    /* Grid */
+    grid-column: span 8;
+}
+
+.key-base--alt-left {
+    /* Grid */
+    grid-column: span 8;
+}
+
+.key-base--alt-right {
+    /* Grid */
+    grid-column: span 6;
+}
+
+.key-base--space {
+    /* Grid */
+    grid-column: span 42;
+}

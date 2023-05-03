@@ -211,6 +211,17 @@ export default class KeyboardLogicManager {
     this.textField.dispatchEvent(this.textFieldChangeEvent);
   }
 
+  deleteSymbolBeforeCaret() {
+    if (this.textField.selectionStart || this.textField.selectionStart === '0') {
+      const startPos = this.textField.selectionStart;
+      const endPos = this.textField.selectionEnd;
+      this.textField.value = this.textField.value.substring(0, startPos - 1)
+        + this.textField.value.substring(endPos, this.textField.value.length);
+      this.textField.selectionStart = startPos - 1;
+      this.textField.selectionEnd = startPos - 1;
+    }
+  }
+
   deleteAll() {
     this.textField.value = '';
     this.textField.dispatchEvent(this.textFieldChangeEvent);
@@ -250,7 +261,7 @@ export default class KeyboardLogicManager {
     if (!this.specialKeys.includes(keyInscription)) {
       switch (keyInscription) {
         case 'Backspace': {
-          this.deleteLastSymbol();
+          this.deleteSymbolBeforeCaret();
           break;
         }
         case 'Del': {

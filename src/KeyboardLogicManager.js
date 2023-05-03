@@ -217,23 +217,31 @@ export default class KeyboardLogicManager {
   }
 
   inputSymbol(symbol) {
-    this.textField.value += symbol;
+    if (this.textField.selectionStart || this.textField.selectionStart === '0') {
+      const startPos = this.textField.selectionStart;
+      const endPos = this.textField.selectionEnd;
+      this.textField.value = this.textField.value.substring(0, startPos)
+        + symbol
+        + this.textField.value.substring(endPos, this.textField.value.length);
+      this.textField.selectionStart = startPos + symbol.length;
+      this.textField.selectionEnd = startPos + symbol.length;
+    } else {
+      this.textField.value += symbol;
+    }
+
     this.textField.dispatchEvent(this.textFieldChangeEvent);
   }
 
   inputLineBreak() {
-    this.textField.value += '\n';
-    this.textField.dispatchEvent(this.textFieldChangeEvent);
+    this.inputSymbol('\n');
   }
 
   inputSpace() {
-    this.textField.value += ' ';
-    this.textField.dispatchEvent(this.textFieldChangeEvent);
+    this.inputSymbol(' ');
   }
 
   inputTab() {
-    this.textField.value += '\u0009';
-    this.textField.dispatchEvent(this.textFieldChangeEvent);
+    this.inputSymbol('\u0009');
   }
 
   virtualKeyboardEventHandler(event) {

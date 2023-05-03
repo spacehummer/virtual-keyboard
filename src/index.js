@@ -16,7 +16,7 @@ import '../assets/styles/style.css';
 import '../assets/styles/normalize.css';
 
 /* Debug control. */
-const debugHardcode = 1;
+const debugHardcode = 2;
 /**
  * TODO: get debug flag from somewhere.
  */
@@ -44,11 +44,14 @@ function windowOnLoadWork() {
   const keyboardManager = new KeyboardLogicManager(
     'body',
     '.keyboard-and-display',
-    1,
+    debug,
   );
 
   keyboardManager.listenPhysicalKeyboard();
   keyboardManager.listenVirtualKeyboard();
+  keyboardManager.observeControlLeftState();
+  keyboardManager.observeShiftState();
+  keyboardManager.observeCapsState();
 }
 
 /* Start onload work */

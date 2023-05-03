@@ -12,14 +12,3 @@ module.exports = (
     ? require("./webpack.prod.config")
     : require("./webpack.dev.config")
 );
-
-// module.exports = (env) => {
-//   console.log(`WebPack mode env.NODE_ENV = ${env.NODE_ENV}`);
-//   return env.NODE_ENV === "production"
-//     ? require("./webpack.prod.config")
-//     : require("./webpack.dev.config");
-// };
-
-// module.exports = process.env.NODE_ENV === "production"
-//   ? webpackProdConfig
-//   : webpackDevConfig;

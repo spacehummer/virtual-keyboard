@@ -90,6 +90,7 @@
 .keys__column-gap {
     /* Grid */
     grid-column: span 1;
+    grid-row: span 6;
 }
 
 .keys__row-gap {
@@ -111,6 +112,13 @@
     background-color: rgb(173, 173, 173);
     /* Animation */
     transition: 800ms;
+    /* Behaviour */
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version
     /* Margins */
     padding: 0;
     /*margin: 4px;*/
@@ -127,14 +135,26 @@
 }
 
 .keys__key-base:active,
-.key-base--pressed,
-.keys__key-base:hover.key-base--pressed {
+.key-base--pressed:not(.key-base--pressed.key-base--unpressed-lock),
+.keys__key-base:hover.key-base--pressed:not(.key-base--pressed.key-base--unpressed-lock),
+.key-base--hold,
+.keys__key-base:hover.key-base--hold {
     background-color: rgb(138, 138, 138);
     color: rgb(20, 255, 185);
     text-shadow: 0 0 4px rgb(16, 210, 153);
     border: 2px solid rgb(114, 114, 114);
     transition: 300ms;
 }
+
+.en-keys--hidden,
+.ru-keys--hidden {
+    display: none;
+}
+
+.key-layout--hidden {
+    display: none;
+}
+
 
 .key-base--backspace {
     /* Grid */

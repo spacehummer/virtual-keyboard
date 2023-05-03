@@ -1,3 +1,5 @@
+import ElementClassObserver from './ElementClassObserver';
+
 /**
  * KeyboardLogicManager class for implement the logic of the virtual keyboard.
  */
@@ -36,6 +38,22 @@ export default class KeyboardLogicManager {
   lastKeyEvent;
 
   textFieldChangeEvent;
+
+  keyControlLeft;
+
+  keyShift;
+
+  keyCaps;
+
+  capsState;
+
+  controlLeftState;
+
+  shiftState;
+
+  languageAlternateState;
+
+  languageAlternateCallCounter;
 
   /**
    * Keyboard logic class constructor.
@@ -93,29 +111,28 @@ export default class KeyboardLogicManager {
 
     /* Make event for change text area */
     this.textFieldChangeEvent = new Event('change');
+
+    this.keyControlLeft = document.querySelector('[data-event-code="ControlLeft"]');
+    this.keyShift = document.querySelector('[data-event-code="ShiftLeft"]');
+    this.keyCaps = document.querySelector('[data-event-code="CapsLock"]');
+
+    this.controlLeftState = false;
+    this.shiftState = false;
+    this.capsState = false;
+
+    this.languageAlternateState = false;
+    this.languageAlternateCallCounter = 0;
   }
 
-  searchKeyAndActions(searchingText, callback, number = 0) {
+  searchKeyByDataAtrAndActions(dataEventCode, callback, number = 0) {
     /* Find hitted key by XPath. */
     let pressedKey = null;
     if (number === 0) {
-      pressedKey = document.evaluate(
-        `//button[text() = "${searchingText}"]`,
-        document,
-        null,
-        XPathResult.FIRST_ORDERED_NODE_TYPE,
-        null,
-      ).singleNodeValue;
+      pressedKey = document.querySelector(`[data-event-code="${dataEventCode}"]`);
     }
     if (number === 1) {
-      pressedKey = document.evaluate(
-        `//button[text() = "${searchingText}"]`,
-        document,
-        null,
-        XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
-        null,
-      );
-      pressedKey = pressedKey.snapshotItem(number);
+      pressedKey = document.querySelectorAll(`[data-event-code="${dataEventCode}"]`);
+      [, pressedKey] = pressedKey;
     }
     if (pressedKey) {
       callback(pressedKey, this.lastKeyEvent);
@@ -126,9 +143,16 @@ export default class KeyboardLogicManager {
 
   keyboardEventHandler(event) {
     if (this.verboseLvl > 0) {
-      /* Console log with event.key info message was here. */
+      /* Console log with '---- Key event:' and event info message was here. */
     }
 
+    const eventCodeExceptions = [
+      'MetaLeft',
+      'MetaRight',
+      'AltGraph',
+    ];
+
+    /* Get current key event into class field */
     this.lastKeyEvent = event;
 
     /* Prevent default behaviour for buttons */
@@ -156,79 +180,30 @@ export default class KeyboardLogicManager {
       }
     }
 
-    let lastKeyHit = event.key;
-    if (!this.keysException.includes(lastKeyHit)) {
-      if (this.keysAlphabeticUpperCase.includes(lastKeyHit)) {
-        lastKeyHit = lastKeyHit.toLowerCase();
+    function disableKeyState(key, eventLocal) {
+      /* Change visual */
+      if (eventLocal.type === 'keydown') {
+        key.classList.add('key-base--unpressed-lock');
+        virtualKeyboardSimulateClickOn(key);
+      } else if (eventLocal.type === 'keyup') {
+        key.classList.remove('key-base--unpressed-lock');
       }
-      this.searchKeyAndActions(lastKeyHit, changeKeyState);
-    } else if (this.keysException.includes(lastKeyHit)) {
-      switch (event.key) {
-        case 'CapsLock': {
-          this.searchKeyAndActions('Caps Lock', changeKeyState);
-          break;
-        }
-        case '\'': {
-          this.searchKeyAndActions('\'', changeKeyState);
-          break;
-        }
-        case 'Shift': {
-          if (event.code === 'ShiftLeft') {
-            this.searchKeyAndActions('Shift', changeKeyState);
-          } else {
-            this.searchKeyAndActions('Shift', changeKeyState, 1);
-          }
-          break;
-        }
-        case 'Delete': {
-          this.searchKeyAndActions('Del', changeKeyState);
-          break;
-        }
-        case 'Control': {
-          if (event.code === 'ControlLeft') {
-            this.searchKeyAndActions('Ctrl', changeKeyState);
-          } else {
-            this.searchKeyAndActions('Ctrl', changeKeyState, 1);
-          }
-          break;
-        }
-        case 'Meta': {
-          this.searchKeyAndActions('Win', changeKeyState);
-          break;
-        }
-        case 'Alt': {
-          if (event.code === 'AltLeft') {
-            this.searchKeyAndActions('Alt', changeKeyState);
-          } else {
-            this.searchKeyAndActions('Alt', changeKeyState, 1);
-          }
-          break;
-        }
-        case ' ': {
-          this.searchKeyAndActions('Space', changeKeyState);
-          break;
-        }
-        case 'ArrowUp': {
-          this.searchKeyAndActions('▲', changeKeyState);
-          break;
-        }
-        case 'ArrowDown': {
-          this.searchKeyAndActions('▼', changeKeyState);
-          break;
-        }
-        case 'ArrowLeft': {
-          this.searchKeyAndActions('◄', changeKeyState);
-          break;
-        }
-        case 'ArrowRight': {
-          this.searchKeyAndActions('►', changeKeyState);
-          break;
-        }
+    }
 
-        default: {
-          break;
-        }
-      }
+    const lastKeyHitByCode = event.code;
+    const lastKeyHitByKey = event.key;
+
+    if (lastKeyHitByKey === 'AltGraph') {
+      this.searchKeyByDataAtrAndActions('ControlLeft', disableKeyState);
+      this.searchKeyByDataAtrAndActions('AltRight', changeKeyState);
+    } else if (!eventCodeExceptions.includes(lastKeyHitByCode)) {
+      this.searchKeyByDataAtrAndActions(lastKeyHitByCode, changeKeyState);
+    } else if
+    (
+      lastKeyHitByCode === 'MetaLeft'
+      || lastKeyHitByCode === 'MetaRight'
+    ) {
+      this.searchKeyByDataAtrAndActions('MetaLeft', changeKeyState);
     }
   }
 
@@ -284,6 +259,230 @@ export default class KeyboardLogicManager {
         }
       }
     }
+  }
+
+  /* TODO: We need use event.code instead event.key!
+   * */
+
+  changeModLayout() {
+    const keys = [...document.querySelectorAll('.keys__key-base')];
+    if ((this.capsState === false) && (this.shiftState === false)) {
+      keys.forEach((key) => {
+        key.querySelectorAll('.key-layout--default')[0].classList
+          .remove('key-layout--hidden');
+        key.querySelectorAll('.key-layout--shift-mod')[0].classList
+          .add('key-layout--hidden');
+        key.querySelectorAll('.key-layout--caps-mod')[0].classList
+          .add('key-layout--hidden');
+        key.querySelectorAll('.key-layout--caps-and-shift-mod')[0].classList
+          .add('key-layout--hidden');
+        key.querySelectorAll('.key-layout--default')[1].classList
+          .remove('key-layout--hidden');
+        key.querySelectorAll('.key-layout--shift-mod')[1].classList
+          .add('key-layout--hidden');
+        key.querySelectorAll('.key-layout--caps-mod')[1].classList
+          .add('key-layout--hidden');
+        key.querySelectorAll('.key-layout--caps-and-shift-mod')[1].classList
+          .add('key-layout--hidden');
+      });
+    } else if ((this.capsState === false) && (this.shiftState === true)) {
+      keys.forEach((key) => {
+        key.querySelectorAll('.key-layout--default')[0].classList
+          .add('key-layout--hidden');
+        key.querySelectorAll('.key-layout--shift-mod')[0].classList
+          .remove('key-layout--hidden');
+        key.querySelectorAll('.key-layout--caps-mod')[0].classList
+          .add('key-layout--hidden');
+        key.querySelectorAll('.key-layout--caps-and-shift-mod')[0].classList
+          .add('key-layout--hidden');
+        key.querySelectorAll('.key-layout--default')[1].classList
+          .add('key-layout--hidden');
+        key.querySelectorAll('.key-layout--shift-mod')[1].classList
+          .remove('key-layout--hidden');
+        key.querySelectorAll('.key-layout--caps-mod')[1].classList
+          .add('key-layout--hidden');
+        key.querySelectorAll('.key-layout--caps-and-shift-mod')[1].classList
+          .add('key-layout--hidden');
+      });
+    } else if ((this.capsState === true) && (this.shiftState === false)) {
+      keys.forEach((key) => {
+        key.querySelectorAll('.key-layout--default')[0].classList
+          .add('key-layout--hidden');
+        key.querySelectorAll('.key-layout--shift-mod')[0].classList
+          .add('key-layout--hidden');
+        key.querySelectorAll('.key-layout--caps-mod')[0].classList
+          .remove('key-layout--hidden');
+        key.querySelectorAll('.key-layout--caps-and-shift-mod')[0].classList
+          .add('key-layout--hidden');
+        key.querySelectorAll('.key-layout--default')[1].classList
+          .add('key-layout--hidden');
+        key.querySelectorAll('.key-layout--shift-mod')[1].classList
+          .add('key-layout--hidden');
+        key.querySelectorAll('.key-layout--caps-mod')[1].classList
+          .remove('key-layout--hidden');
+        key.querySelectorAll('.key-layout--caps-and-shift-mod')[1].classList
+          .add('key-layout--hidden');
+      });
+    } else if ((this.capsState === true) && (this.shiftState === true)) {
+      keys.forEach((key) => {
+        key.querySelectorAll('.key-layout--default')[0].classList
+          .add('key-layout--hidden');
+        key.querySelectorAll('.key-layout--shift-mod')[0].classList
+          .add('key-layout--hidden');
+        key.querySelectorAll('.key-layout--caps-mod')[0].classList
+          .add('key-layout--hidden');
+        key.querySelectorAll('.key-layout--caps-and-shift-mod')[0].classList
+          .remove('key-layout--hidden');
+        key.querySelectorAll('.key-layout--default')[1].classList
+          .add('key-layout--hidden');
+        key.querySelectorAll('.key-layout--shift-mod')[1].classList
+          .add('key-layout--hidden');
+        key.querySelectorAll('.key-layout--caps-mod')[1].classList
+          .add('key-layout--hidden');
+        key.querySelectorAll('.key-layout--caps-and-shift-mod')[1].classList
+          .remove('key-layout--hidden');
+      });
+    }
+  }
+
+  changeLanguageLayout() {
+    const keys = [...document.querySelectorAll('.keys__key-base')];
+    if (this.languageAlternateState === false) {
+      keys.forEach((key) => {
+        key.querySelector('.key-base__en-keys').classList
+          .add('en-keys--hidden');
+        key.querySelector('.key-base__ru-keys').classList
+          .remove('ru-keys--hidden');
+      });
+      this.languageAlternateState = true;
+    } else {
+      keys.forEach((key) => {
+        key.querySelector('.key-base__en-keys').classList
+          .remove('en-keys--hidden');
+        key.querySelector('.key-base__ru-keys').classList
+          .add('ru-keys--hidden');
+      });
+      this.languageAlternateState = false;
+    }
+  }
+
+  modStateManager(signal) {
+    switch (signal) {
+      case 'caps': {
+        if (this.capsState === false) {
+          this.capsState = true;
+          this.changeModLayout();
+          if (this.verboseLvl > 1) {
+            /* Console log with '---- Caps mod on!' was here. */
+          }
+          this.keyCaps.classList.add('key-base--hold');
+        } else if (this.capsState === true) {
+          this.capsState = false;
+          this.changeModLayout();
+          if (this.verboseLvl > 1) {
+            /* Console log with '---- Caps mod off!' was here. */
+          }
+          this.keyCaps.classList.remove('key-base--hold');
+        }
+        break;
+      }
+      case 'shift': {
+        if (this.shiftState === false) {
+          this.shiftState = true;
+          this.changeModLayout();
+          if (this.verboseLvl > 1) {
+            /* Console log with '---- Shift mod on!' was here. */
+          }
+          this.keyShift.classList.add('key-base--hold');
+        } else if (this.shiftState === true) {
+          this.shiftState = false;
+          this.changeModLayout();
+          if (this.verboseLvl > 1) {
+            /* Console log with '---- Shift mod off!' was here. */
+          }
+          this.keyShift.classList.remove('key-base--hold');
+        }
+        break;
+      }
+      case 'controlLeft': {
+        if (this.controlLeftState === false) {
+          this.controlLeftState = true;
+        } else if (this.controlLeftState === true) {
+          this.controlLeftState = false;
+        }
+        break;
+      }
+      default: {
+        break;
+      }
+    }
+
+    if (
+      (this.shiftState === true)
+      && (this.controlLeftState === true)
+      && (this.languageAlternateCallCounter < 1)
+    ) {
+      this.changeLanguageLayout();
+    }
+  }
+
+  observeControlLeftState() {
+    const onShiftModWork = () => {
+      this.modStateManager('controlLeft');
+    };
+
+    const onUnShiftModWork = () => {
+      this.modStateManager('controlLeft');
+    };
+
+    const controlLeftObserver = new ElementClassObserver(
+      this.keyControlLeft,
+      'key-base--pressed',
+      onShiftModWork,
+      onUnShiftModWork,
+    );
+
+    controlLeftObserver.init();
+    controlLeftObserver.observe();
+  }
+
+  observeShiftState() {
+    const onShiftModWork = () => {
+      this.modStateManager('shift');
+    };
+
+    const onUnShiftModWork = () => {
+      this.modStateManager('shift');
+    };
+
+    const shiftObserver = new ElementClassObserver(
+      this.keyShift,
+      'key-base--pressed',
+      onShiftModWork,
+      onUnShiftModWork,
+    );
+
+    shiftObserver.init();
+    shiftObserver.observe();
+  }
+
+  observeCapsState() {
+    const onCapsModWork = () => {
+      this.modStateManager('caps');
+    };
+
+    const onUnCapsModWork = () => {
+    };
+
+    const capsObserver = new ElementClassObserver(
+      this.keyCaps,
+      'key-base--pressed',
+      onCapsModWork,
+      onUnCapsModWork,
+    );
+
+    capsObserver.init();
+    capsObserver.observe();
   }
 
   listenVirtualKeyboard() {

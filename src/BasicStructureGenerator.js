@@ -22,23 +22,46 @@ import inscriptions from '../assets/js/inscriptions.json';
 
 /**
  * @typedef   {Object} keyByNumber    - inner Object with information about separate key.
+ * @property  {String} eventCode      - key event.code.
  * @property  {String} row            - field with information
  *                                      about keyboard row of current key.
  * @property  {Object} symbolDefault  - Object with information about symbol for default state.
- * @property  {Object} symbolMod      - Object with information about symbol
+ * @property  {Object} symbolShiftMod - Object with information about symbol
  *                                      for Shift modification state.
+ * @property  {Object} symbolCapsMod  - Object with information about symbol
+ *                                      for Shift modification state.
+ * @property  {Object} symbolCapsShiftMod - Object with information about symbol
+ *                                          for Shift modification state.
  */
 
 /**
  * @typedef   {Object} symbolDefault  - Object with information about symbol for default state.
- * @property  {String} symbol         - symbol or HTML mnemonic.
+ * @property  {String} symbol         - symbol.
+ * @property  {String} mnemonicHTML   - HTML mnemonic.
  * @property  {String} name           - human-readable name of symbol.
  */
 
 /**
- * @typedef   {Object} symbolMod      - Object with information about symbol
+ * @typedef   {Object} symbolShiftMod - Object with information about symbol
  *                                      for Shift modification state.
- * @property  {String} symbol         - symbol or HTML mnemonic.
+ * @property  {String} symbol         - symbol.
+ * @property  {String} mnemonicHTML   - HTML mnemonic.
+ * @property  {String} name           - human-readable name of symbol.
+ */
+
+/**
+ * @typedef   {Object} symbolCapsMod  - Object with information about symbol
+ *                                      for Shift modification state.
+ * @property  {String} symbol         - symbol.
+ * @property  {String} mnemonicHTML   - HTML mnemonic.
+ * @property  {String} name           - human-readable name of symbol.
+ */
+
+/**
+ * @typedef   {Object} symbolCapsShiftMod  - Object with information about symbol
+ *                                           for Shift modification state.
+ * @property  {String} symbol         - symbol.
+ * @property  {String} mnemonicHTML   - HTML mnemonic.
  * @property  {String} name           - human-readable name of symbol.
  */
 // </editor-fold desc="Keys Object JSDoc">
@@ -63,6 +86,8 @@ export default class BasicStructureGenerator {
   footer;
 
   container;
+
+  keyboard;
   // </editor-fold desc="Elements">
 
   inscriptions;
@@ -103,6 +128,9 @@ export default class BasicStructureGenerator {
     this.container = document.createElement('div');
     this.container.classList.add('container');
 
+    /* Initialize keyboard */
+    this.keyboard = null;
+
     /**
      * Object, parsed from JSON with info about keys.
      * @type keyInscriptions
@@ -130,26 +158,115 @@ export default class BasicStructureGenerator {
     this.header.lastElementChild.appendChild(headingH1);
   }
 
-  /**
-   * Generate main HTML Element and its basic content.
-   */
-  generateMain() {
-    /* Generate main */
-    this.main = document.createElement('main');
-    this.main.classList.add('main');
-
-    /* Generate basic containers and display textarea */
-    const keyboardAndDisplay = document.createElement('div');
-    keyboardAndDisplay.classList.add('keyboard-and-display');
-    const display = document.createElement('textarea');
-    display.classList.add('keyboard__display');
-    const keyboard = document.createElement('div');
-    keyboard.classList.add('keyboard__keys-container');
-
-    if (this.verboseLvl > 0) {
-      // Console log with Keys count was here.
+  getInscriptionForKey(elementForInscription, key, symbolMod, lang) {
+    const elementForInscriptionLocal = elementForInscription;
+    switch (symbolMod) {
+      case 'symbolDefault': {
+        elementForInscriptionLocal.innerHTML = this.inscriptions[lang][key]
+          .symbolDefault.symbol;
+        break;
+      }
+      case 'symbolShiftMod': {
+        elementForInscriptionLocal.innerHTML = this.inscriptions[lang][key]
+          .symbolShiftMod.symbol !== 'none'
+          ? this.inscriptions[lang][key].symbolShiftMod.symbol
+          : this.inscriptions[lang][key].symbolDefault.symbol;
+        break;
+      }
+      case 'symbolCapsMod': {
+        elementForInscriptionLocal.innerHTML = this.inscriptions[lang][key]
+          .symbolCapsMod.symbol !== 'none'
+          ? this.inscriptions[lang][key].symbolCapsMod.symbol
+          : this.inscriptions[lang][key].symbolDefault.symbol;
+        break;
+      }
+      case 'symbolCapsShiftMod': {
+        elementForInscriptionLocal.innerHTML = this.inscriptions[lang][key]
+          .symbolCapsShiftMod.symbol !== 'none'
+          ? this.inscriptions[lang][key].symbolCapsShiftMod.symbol
+          : this.inscriptions[lang][key].symbolDefault.symbol;
+        break;
+      }
+      default: {
+        break;
+      }
     }
+  }
 
+  generateKeyLayouts(keyLayoutLanguage, keyNumberLocal) {
+    const keyLayoutsCurrentLang = document.createElement('span');
+    keyLayoutsCurrentLang.classList.add(`key-base__${keyLayoutLanguage}-keys`);
+
+    const layoutArr = [
+      document.createElement('span'),
+      document.createElement('span'),
+      document.createElement('span'),
+      document.createElement('span'),
+    ];
+    layoutArr.forEach((element, index) => {
+      const elementLocal = element;
+      elementLocal.classList.add(`${keyLayoutLanguage}-keys__key-layout`);
+      switch (index) {
+        case 0: {
+          elementLocal.classList.add('key-layout--default');
+          this.getInscriptionForKey(
+            elementLocal,
+            keyNumberLocal,
+            'symbolDefault',
+            keyLayoutLanguage,
+          );
+          break;
+        }
+        case 1: {
+          elementLocal.classList.add('key-layout--shift-mod');
+          elementLocal.classList.add('key-layout--hidden');
+          this.getInscriptionForKey(
+            elementLocal,
+            keyNumberLocal,
+            'symbolShiftMod',
+            keyLayoutLanguage,
+          );
+          break;
+        }
+        case 2: {
+          elementLocal.classList.add('key-layout--caps-mod');
+          elementLocal.classList.add('key-layout--hidden');
+          this.getInscriptionForKey(
+            elementLocal,
+            keyNumberLocal,
+            'symbolCapsMod',
+            keyLayoutLanguage,
+          );
+          break;
+        }
+        case 3: {
+          elementLocal.classList.add('key-layout--caps-and-shift-mod');
+          elementLocal.classList.add('key-layout--hidden');
+          this.getInscriptionForKey(
+            elementLocal,
+            keyNumberLocal,
+            'symbolCapsShiftMod',
+            keyLayoutLanguage,
+          );
+          break;
+        }
+        default: {
+          break;
+        }
+      }
+      keyLayoutsCurrentLang.appendChild(elementLocal);
+    });
+    if (this.verboseLvl > 1) {
+      /* Console log with keyLayoutsCurrentLang was here */
+    }
+    return keyLayoutsCurrentLang;
+  }
+
+  /**
+   * Generate keys for keyboard with layouts for mods
+   * and keyboard different language layouts.
+   */
+  generateKeys() {
     /* Generate keys, column-gaps and row-gaps, as grid elements. */
     for (let keyIndex = 1; keyIndex <= this.keysCount + (this.keysCount - 0); keyIndex += 1) {
       if (keyIndex % 2 === 0) {
@@ -157,7 +274,15 @@ export default class BasicStructureGenerator {
         /* Add key base. */
         const key = document.createElement('button');
         key.classList.add('keys__key-base');
-        key.innerHTML = this.inscriptions[this.language][keyNumberTmp].symbolDefault.symbol;
+        key.setAttribute(
+          'data-event-code',
+          this.inscriptions[this.language][keyNumberTmp].eventCode,
+        );
+
+        key.appendChild(this.generateKeyLayouts('en', keyNumberTmp));
+        key.appendChild(this.generateKeyLayouts('ru', keyNumberTmp));
+        key.lastElementChild.classList.add('ru-keys--hidden');
+
         /* Add styles for keys with non-standard sizes. */
         switch ((this.inscriptions[this.language][keyNumberTmp].symbolDefault.symbol)) {
           case 'Backspace': {
@@ -168,7 +293,7 @@ export default class BasicStructureGenerator {
             key.classList.add('key-base--tab');
             break;
           }
-          case '&#92;': {
+          case '\\': {
             key.classList.add('key-base--backslash');
             break;
           }
@@ -219,7 +344,7 @@ export default class BasicStructureGenerator {
             break;
           }
         }
-        keyboard.appendChild(key);
+        this.keyboard.appendChild(key);
       } else if (
         (keyIndex !== 1)
         && (keyIndex !== 29)
@@ -230,18 +355,41 @@ export default class BasicStructureGenerator {
         /* Add column-gap, as div in grid. */
         const columnGapElement = document.createElement('div');
         columnGapElement.classList.add('keys__column-gap');
-        keyboard.appendChild(columnGapElement);
+        this.keyboard.appendChild(columnGapElement);
       } else if (keyIndex !== 1) {
         /* Add row-gap, as div in grid. */
         const rowGapElement = document.createElement('div');
         rowGapElement.classList.add('keys__row-gap');
-        keyboard.appendChild(rowGapElement);
+        this.keyboard.appendChild(rowGapElement);
       }
     }
+  }
+
+  /**
+   * Generate main HTML Element and its basic content.
+   */
+  generateMain() {
+    /* Generate main */
+    this.main = document.createElement('main');
+    this.main.classList.add('main');
+
+    /* Generate basic containers and display textarea */
+    const keyboardAndDisplay = document.createElement('div');
+    keyboardAndDisplay.classList.add('keyboard-and-display');
+    const display = document.createElement('textarea');
+    display.classList.add('keyboard__display');
+    this.keyboard = document.createElement('div');
+    this.keyboard.classList.add('keyboard__keys-container');
+
+    if (this.verboseLvl > 0) {
+      // Console log with Keys count was here.
+    }
+
+    this.generateKeys();
 
     /* Append container, generated keyboard and display to main */
     keyboardAndDisplay.appendChild(display);
-    keyboardAndDisplay.appendChild(keyboard);
+    keyboardAndDisplay.appendChild(this.keyboard);
     this.main.appendChild(this.container.cloneNode(true));
     this.main.lastElementChild.classList.add('container--main');
     this.main.lastElementChild.appendChild(keyboardAndDisplay);
